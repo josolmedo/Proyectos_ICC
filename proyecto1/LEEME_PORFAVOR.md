@@ -1,0 +1,47 @@
+Introducción a Ciencias de la Computación
+=========================================
+
+Proyecto 1: Base de datos de perros
+-------------------------------------------------------
+
+### Fecha de entrega: viernes 4 de abril, 2025
+
+Para compilar:
+
+```
+$ mvn compile
+```
+
+Para ver las pruebas unitarias:
+
+```
+$ mvn test
+```
+
+Por último, se debe ejecutar correctamente el programa escrito en la clase
+[Proyecto1](main/src/main/java/mx/unam/ciencias/icc/Proyecto1.java)
+al hacer:
+
+```
+$ mvn install
+...
+$ java -jar target/proyecto1.jar -g archivo.db # guarda la base de datos
+...
+$ java -jar target/proyecto1.jar -c archivo.db # carga la base de datos
+```
+
+
+### Repositorio
+
+Pueden clonar el proyecto con el siguiente comando:
+
+```
+$ git clone <liga>
+```
+
+### Documentación
+
+La documentación generada por JavaDoc la pueden consultar aquí:
+
+
+<Poner liga de la documentacion>
