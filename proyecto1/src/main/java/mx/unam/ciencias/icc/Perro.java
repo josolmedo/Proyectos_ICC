@@ -119,7 +119,7 @@ public class Perro implements Registro {
      * @return una representación en cadena del perro.
      */
     @Override public String toString() {
-    	String cadena = String.format("Nombre: %s\n" + "Raza: %s\n" + "Edad: %d\n" + "Estatura: %2.2f\n" + "Peso: %2.2f\n", nombre, raza, cuenta, pomedio, edad);
+    	String cadena = String.format("Nombre: %s\n" + "Raza: %s\n" + "Edad: %d\n" + "Estatura: %2.2f\n" + "Peso: %2.2f\n", nombre, raza, edad, estatura, peso);
 	return cadena;
     }
 
@@ -159,23 +159,22 @@ public class Perro implements Registro {
      *         es una seriación válida de un perro.
      */
     @Override public void deseria(String linea) throws ExcepcionLineaInvalida{
-	
-	if (linea == null){
-	    throw new ExcepcionLineaInvalida();
-	}
-	String[] partes = linea.trim().split("\t");
-	if (partes.length != 5){
-	    throw new ExcepcionLineaInvalida();
-	}
-	try {
-	    this.nombre = partes[0];
-        this.raza = partes[1];
-        this.edad = Integer.parseInt(partes[2]);
-	    this.estatura = Double.parseDouble(partes[3]);
-	    this.peso = Integer.parseDouble(partes[4]);
-	} catch (Exception e) {
-	    throw new ExcepcionLineaInvalida();
-	}
+        if (linea == null){
+            throw new ExcepcionLineaInvalida();
+        }
+        String[] partes = linea.trim().split("\t");
+        if (partes.length != 5){
+            throw new ExcepcionLineaInvalida();
+        }
+        try {
+            this.nombre = partes[0];
+            this.raza = partes[1];
+            this.edad = Integer.parseInt(partes[2]);
+            this.estatura = Double.parseDouble(partes[3]);
+            this.peso = Double.parseDouble(partes[4]);
+        } catch (Exception e) {
+            throw new ExcepcionLineaInvalida();
+        }
     }
 
     /*catch (ExcepcionLineaInvalida()){
@@ -228,11 +227,11 @@ public class Perro implements Registro {
             if (!(valor instanceof String)){
                 return false;
             }
-            String s = (String) valor;
-            if (s.isEmpty()){
+            String p = (String) valor;
+            if (p.isEmpty()){
                 return false;
             }
-            return raza.contains(s);
+            return raza.contains(p);
 
         case EDAD:
             return (valor instanceof Integer) && (edad >= (Integer) valor);

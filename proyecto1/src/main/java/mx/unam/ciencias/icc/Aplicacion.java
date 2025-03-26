@@ -211,7 +211,7 @@ public class Aplicacion {
 
     /* Regresa el campo. */
     private String getCampo(Scanner sc) {
-        System.out.printf("\n¿Por qué campo quiere buscar? (n/c/p/e): ");
+        System.out.printf("\n¿Por qué campo quiere buscar? (n/r/ed/es/p): ");
         return sc.next();
     }
 
@@ -221,12 +221,14 @@ public class Aplicacion {
         switch (c) {
         case "n": return bdd.buscaRegistros(CampoPerro.NOMBRE,
                                             getValorNombre(sc));
-        case "c": return bdd.buscaRegistros(CampoPerro.CUENTA,
-                                            getValorCuenta(sc));
-        case "p": return bdd.buscaRegistros(CampoPerro.PROMEDIO,
-                                            getValorPromedio(sc));
-        case "e": return bdd.buscaRegistros(CampoPerro.EDAD,
+        case "r": return bdd.buscaRegistros(CampoPerro.RAZA,
+                                            getValorRaza(sc));
+        case "ed": return bdd.buscaRegistros(CampoPerro.EDAD,
                                             getValorEdad(sc));
+        case "es": return bdd.buscaRegistros(CampoPerro.ESTATURA,
+                                            getValorEdad(sc));
+        case "p": return bdd.buscaRegistros(CampoPerro.PESO,
+                                            getValorPeso(sc));
         default:
             String m = String.format("El campo '%s' es inválido.", c);
             throw new ExcepcionOpcionInvalida(m);
@@ -239,21 +241,28 @@ public class Aplicacion {
         return sc.next();
     }
 
-    /* Regresa el valor a buscar para el número de cuenta. */
-    private Integer getValorCuenta(Scanner sc) {
-        System.out.printf("El número de cuenta debe ser mayor o igual a: ");
-        return Integer.valueOf(sc.nextInt());
+    /* Regresa el valor a buscar para raza. */
+    private String getValorRaza(Scanner sc) {
+        System.out.printf("La raza debe contener: ");
+        return sc.next();
     }
 
-    /* Regresa el valor a buscar para el promedio. */
-    private Double getValorPromedio(Scanner sc) {
-        System.out.printf("El promedio debe ser mayor o igual a: ");
-        return Double.valueOf(sc.nextDouble());
-    }
-
-    /* Regresa el valor a buscar para el promedio. */
+    /* Regresa el valor a buscar para la edad. */
     private Integer getValorEdad(Scanner sc) {
         System.out.printf("La edad debe ser mayor o igual a: ");
         return Integer.valueOf(sc.nextInt());
     }
+
+    /* Regresa el valor a buscar para la estatura. */
+    private Double getValorEstatura(Scanner sc) {
+        System.out.printf("La estatura debe ser mayor o igual a: ");
+        return Double.valueOf(sc.nextDouble());
+    }
+
+    /* Regresa el valor a buscar para el peso. */
+    private Double getValorPeso(Scanner sc) {
+        System.out.printf("El peso debe ser mayor o igual a: ");
+        return Double.valueOf(sc.nextDouble());
+    }
+
 }
