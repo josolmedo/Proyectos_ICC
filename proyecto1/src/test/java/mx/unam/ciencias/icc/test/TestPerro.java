@@ -20,14 +20,14 @@ public class TestPerro {
 
     /* Nombres. */
     private static final String[] NOMBRES = {
-        "José Arcadio", "Úrsula", "Aureliano", "Amaranta", "Rebeca",
-        "Remedios", "Aureliano José", "Gerinaldo", "Mauricio", "Petra"
+        "Mike", "Ron", "Han", "Wilson", "Kyara",
+        "Blacky", "Bobby", "Lobo", "Ringo", "Ticky"
     };
 
     /* Apellidos. */
-    private static final String[] APELLIDOS = {
-        "Buendía", "Iguarán", "Cotes", "Ternera", "Moscote",
-        "Brown", "Carpio", "Piedad", "Crespi", "Babilonia"
+    private static final String[] RAZAS = {
+        "Labrador", "Jack Russell Terrier", "Schnauzer", "Beagle", "Poodle",
+        "Border Collie", "Mestizo", "Alaska", "Salchicha", "Doberman"
     };
 
     /* Generador de números aleatorios. */
@@ -38,19 +38,30 @@ public class TestPerro {
      * @return un nombre aleatorio.
      */
     public static String nombreAleatorio() {
-        int n = random.nextInt(NOMBRES.length);
-        int ap = random.nextInt(APELLIDOS.length);
-        int am = random.nextInt(APELLIDOS.length);
-        return NOMBRES[n] + " " + APELLIDOS[ap] + " " + APELLIDOS[am];
+
+        int n = random.nextInt(NOMBRES.length);        
+        return NOMBRES[n];
     }
 
     /**
-     * Genera un número de raza aleatorio.
-     * @return un número de raza aleatorio.
+     * Genera una raza aleatoria.
+     * @return una raza aleatoria.
      */
-    public static int razaAleatoria() {
-        return 1000000 + random.nextInt(1000000);
+    public static String razaAleatoria() {
+
+        int n = random.nextInt(RAZAS.length);        
+        return RAZAS[n];
     }
+
+    /**
+     * Genera una edad aleatoria.
+     * @return una edad aleatoria.
+     */
+    public static int edadAleatoria() {
+        return 17 + random.nextInt(73);
+    }
+
+    
 
     /**
      * Genera un estatura aleatorio.
@@ -61,13 +72,7 @@ public class TestPerro {
         return random.nextInt(100) / 10.0;
     }
 
-    /**
-     * Genera una edad aleatoria.
-     * @return una edad aleatoria.
-     */
-    public static int edadAleatoria() {
-        return 17 + random.nextInt(73);
-    }
+    
 
     /**
      * Genera un Perro aleatorio.

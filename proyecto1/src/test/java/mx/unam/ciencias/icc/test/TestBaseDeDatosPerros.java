@@ -7,9 +7,9 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Random;
 import mx.unam.ciencias.icc.BaseDeDatos;
-import mx.unam.ciencias.icc.BaseDeDatosEstudiantes;
-import mx.unam.ciencias.icc.CampoEstudiante;
-import mx.unam.ciencias.icc.Estudiante;
+import mx.unam.ciencias.icc.BaseDeDatosPerros;
+import mx.unam.ciencias.icc.CampoPerro;
+import mx.unam.ciencias.icc.Perro;
 import mx.unam.ciencias.icc.Lista;
 import org.junit.Assert;
 import org.junit.Rule;
@@ -17,18 +17,18 @@ import org.junit.Test;
 import org.junit.rules.Timeout;
 
 /**
- * Clase para pruebas unitarias de la clase {@link BaseDeDatosEstudiantes}.
+ * Clase para pruebas unitarias de la clase {@link BaseDeDatosPerros}.
  */
-public class TestBaseDeDatosEstudiantes {
+public class TestBaseDeDatosPerros {
 
     /** Expiración para que ninguna prueba tarde más de 5 segundos. */
     @Rule public Timeout expiracion = Timeout.seconds(5);
 
     /* Generador de números aleatorios. */
     private Random random;
-    /* Base de datos de estudiantes. */
-    private BaseDeDatosEstudiantes bdd;
-    /* Número total de estudiantes. */
+    /* Base de datos de perros. */
+    private BaseDeDatosPerros bdd;
+    /* Número total de Perros. */
     private int total;
 
     /* Enumeración espuria. */
@@ -39,22 +39,22 @@ public class TestBaseDeDatosEstudiantes {
 
     /**
      * Crea un generador de números aleatorios para cada prueba y una base de
-     * datos de estudiantes.
+     * datos de Perros.
      */
-    public TestBaseDeDatosEstudiantes() {
+    public TestBaseDeDatosPerros() {
         random = new Random();
-        bdd = new BaseDeDatosEstudiantes();
+        bdd = new BaseDeDatosPerros();
         total = 2 + random.nextInt(100);
     }
 
     /**
      * Prueba unitaria para {@link
-     * BaseDeDatosEstudiantes#BaseDeDatosEstudiantes}.
+     * BaseDeDatosPerros#BaseDeDatosPerros}.
      */
     @Test public void testConstructor() {
-        Lista estudiantes = bdd.getRegistros();
-        Assert.assertFalse(estudiantes == null);
-        Assert.assertTrue(estudiantes.getLongitud() == 0);
+        Lista Perros = bdd.getRegistros();
+        Assert.assertFalse(Perros == null);
+        Assert.assertTrue(Perros.getLongitud() == 0);
         Assert.assertTrue(bdd.getNumRegistros() == 0);
     }
 
@@ -64,7 +64,7 @@ public class TestBaseDeDatosEstudiantes {
     @Test public void testGetNumRegistros() {
         Assert.assertTrue(bdd.getNumRegistros() == 0);
         for (int i = 0; i < total; i++) {
-            Estudiante e = TestEstudiante.estudianteAleatorio();
+            Perro e = TestPerro.perroAleatorio();
             bdd.agregaRegistro(e);
             Assert.assertTrue(bdd.getNumRegistros() == i+1);
         }
@@ -79,19 +79,19 @@ public class TestBaseDeDatosEstudiantes {
         Lista r = bdd.getRegistros();
         Assert.assertTrue(l.equals(r));
         Assert.assertFalse(l == r);
-        Estudiante[] estudiantes = new Estudiante[total];
+        Estudiante[] Perros = new Estudiante[total];
         for (int i = 0; i < total; i++) {
-            estudiantes[i] = TestEstudiante.estudianteAleatorio();
-            bdd.agregaRegistro(estudiantes[i]);
+            Perros[i] = TestEstudiante.estudianteAleatorio();
+            bdd.agregaRegistro(Perros[i]);
         }
         l = bdd.getRegistros();
         int c = 0;
         Lista.Nodo nodo = l.getCabeza();
         while (nodo != null) {
-            Assert.assertTrue(estudiantes[c++].equals(nodo.get()));
+            Assert.assertTrue(Perros[c++].equals(nodo.get()));
             nodo = nodo.getSiguiente();
         }
-        l.elimina(estudiantes[0]);
+        l.elimina(Perros[0]);
         Assert.assertFalse(l.equals(bdd.getRegistros()));
         Assert.assertFalse(l.getLongitud() == bdd.getNumRegistros());
     }
@@ -186,15 +186,15 @@ public class TestBaseDeDatosEstudiantes {
     @Test public void testCarga() {
         int ini = random.nextInt(1000000);
         String entrada = "";
-        Estudiante[] estudiantes = new Estudiante[total];
+        Estudiante[] Perros = new Estudiante[total];
         for (int i = 0; i < total; i++) {
-            estudiantes[i] = TestEstudiante.estudianteAleatorio(ini + i);
+            Perros[i] = TestEstudiante.estudianteAleatorio(ini + i);
             entrada += String.format("%s\t%d\t%2.2f\t%d\n",
-                                     estudiantes[i].getNombre(),
-                                     estudiantes[i].getCuenta(),
-                                     estudiantes[i].getPromedio(),
-                                     estudiantes[i].getEdad());
-            bdd.agregaRegistro(estudiantes[i]);
+                                     Perros[i].getNombre(),
+                                     Perros[i].getCuenta(),
+                                     Perros[i].getPromedio(),
+                                     Perros[i].getEdad());
+            bdd.agregaRegistro(Perros[i]);
         }
         try {
             StringReader srInt = new StringReader(entrada);
@@ -209,20 +209,20 @@ public class TestBaseDeDatosEstudiantes {
         Lista l = bdd.getRegistros();
         Lista.Nodo nodo = l.getCabeza();
         while (nodo != null) {
-            Assert.assertTrue(estudiantes[c++].equals(nodo.get()));
+            Assert.assertTrue(Perros[c++].equals(nodo.get()));
             nodo = nodo.getSiguiente();
         }
         entrada = String.format("%s\t%d\t%2.2f\t%d\n",
-                                estudiantes[0].getNombre(),
-                                estudiantes[0].getCuenta(),
-                                estudiantes[0].getPromedio(),
-                                estudiantes[0].getEdad());
+                                Perros[0].getNombre(),
+                                Perros[0].getCuenta(),
+                                Perros[0].getPromedio(),
+                                Perros[0].getEdad());
         entrada += " \n";
         entrada += String.format("%s\t%d\t%2.2f\t%d\n",
-                                 estudiantes[1].getNombre(),
-                                 estudiantes[1].getCuenta(),
-                                 estudiantes[1].getPromedio(),
-                                 estudiantes[1].getEdad());
+                                 Perros[1].getNombre(),
+                                 Perros[1].getCuenta(),
+                                 Perros[1].getPromedio(),
+                                 Perros[1].getEdad());
         try {
             StringReader srInt = new StringReader(entrada);
             BufferedReader in = new BufferedReader(srInt, 8192);
@@ -245,7 +245,7 @@ public class TestBaseDeDatosEstudiantes {
     }
 
     /**
-     * Prueba unitaria para {@link BaseDeDatosEstudiantes#creaRegistro}.
+     * Prueba unitaria para {@link BaseDeDatosPerros#creaRegistro}.
      */
     @Test public void testCreaRegistro() {
         Estudiante e = (Estudiante)bdd.creaRegistro();
@@ -256,15 +256,15 @@ public class TestBaseDeDatosEstudiantes {
     }
 
     /**
-     * Prueba unitaria para {@link BaseDeDatosEstudiantes#buscaRegistros}.
+     * Prueba unitaria para {@link BaseDeDatosPerros#buscaRegistros}.
      */
     @Test public void testBuscaRegistros() {
-        Estudiante[] estudiantes = new Estudiante[total];
+        Estudiante[] Perros = new Estudiante[total];
         int ini = 1000000 + random.nextInt(999999);
         for (int i = 0; i < total; i++) {
             Estudiante e =  new Estudiante(String.valueOf(ini+i),
                                            ini+i, (i * 10.0) / total, i);
-            estudiantes[i] = e;
+            Perros[i] = e;
             bdd.agregaRegistro(e);
         }
 
@@ -275,7 +275,7 @@ public class TestBaseDeDatosEstudiantes {
 
         for (int k = 0; k < total/10 + 3; k++) {
             i = random.nextInt(total);
-            estudiante = estudiantes[i];
+            estudiante = Perros[i];
 
             String nombre = estudiante.getNombre();
             l = bdd.buscaRegistros(CampoEstudiante.NOMBRE, nombre);
