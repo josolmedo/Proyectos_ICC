@@ -64,7 +64,7 @@ public class TestBaseDeDatosPerros {
     @Test public void testGetNumRegistros() {
         Assert.assertTrue(bdd.getNumRegistros() == 0);
         for (int i = 0; i < total; i++) {
-            Perro e = TestPerro.perroAleatorio();
+            Perro e = TestPerro.PerroAleatorio();
             bdd.agregaRegistro(e);
             Assert.assertTrue(bdd.getNumRegistros() == i+1);
         }
@@ -79,9 +79,9 @@ public class TestBaseDeDatosPerros {
         Lista r = bdd.getRegistros();
         Assert.assertTrue(l.equals(r));
         Assert.assertFalse(l == r);
-        Estudiante[] Perros = new Estudiante[total];
+        Perro[] Perros = new Perro[total];
         for (int i = 0; i < total; i++) {
-            Perros[i] = TestEstudiante.estudianteAleatorio();
+            Perros[i] = TestPerro.PerroAleatorio();
             bdd.agregaRegistro(Perros[i]);
         }
         l = bdd.getRegistros();
@@ -101,7 +101,7 @@ public class TestBaseDeDatosPerros {
      */
     @Test public void testAgregaRegistro() {
         for (int i = 0; i < total; i++) {
-            Estudiante e = TestEstudiante.estudianteAleatorio();
+            Perro e = TestPerro.PerroAleatorio();
             Assert.assertFalse(bdd.getRegistros().contiene(e));
             bdd.agregaRegistro(e);
             Assert.assertTrue(bdd.getRegistros().contiene(e));
@@ -116,12 +116,12 @@ public class TestBaseDeDatosPerros {
     @Test public void testEliminaRegistro() {
         int ini = random.nextInt(1000000);
         for (int i = 0; i < total; i++) {
-            Estudiante e = TestEstudiante.estudianteAleatorio(ini + i);
+            Perro e = TestPerro.PerroAleatorio(ini + i);
             bdd.agregaRegistro(e);
         }
         while (bdd.getNumRegistros() > 0) {
             int i = random.nextInt(bdd.getNumRegistros());
-            Estudiante e = (Estudiante)bdd.getRegistros().get(i);
+            Perro e = (Perro)bdd.getRegistros().get(i);
             Assert.assertTrue(bdd.getRegistros().contiene(e));
             bdd.eliminaRegistro(e);
             Assert.assertFalse(bdd.getRegistros().contiene(e));
@@ -133,7 +133,7 @@ public class TestBaseDeDatosPerros {
      */
     @Test public void testLimpia() {
         for (int i = 0; i < total; i++) {
-            Estudiante e = TestEstudiante.estudianteAleatorio();
+            Perro e = TestPerro.PerroAleatorio();
             bdd.agregaRegistro(e);
         }
         Lista registros = bdd.getRegistros();
@@ -150,7 +150,7 @@ public class TestBaseDeDatosPerros {
      */
     @Test public void testGuarda() {
         for (int i = 0; i < total; i++) {
-            Estudiante e = TestEstudiante.estudianteAleatorio();
+            Perro e = TestPerro.PerroAleatorio();
             bdd.agregaRegistro(e);
         }
         String guardado = "";
@@ -169,12 +169,8 @@ public class TestBaseDeDatosPerros {
         int c = 0;
         Lista.Nodo nodo = l.getCabeza();
         while (nodo != null) {
-            Estudiante e = (Estudiante)nodo.get();
-            String el = String.format("%s\t%d\t%2.2f\t%d",
-                                      e.getNombre(),
-                                      e.getCuenta(),
-                                      e.getPromedio(),
-                                      e.getEdad());
+            Perro e = (Perro)nodo.get();
+            String el = String.format("%s\t%s\t%d\t%2.2f\t%2.2f\n", e.getNombre(), e.getRaza(), e.getEdad(), e.getEstatura(), e.getPeso());
             Assert.assertTrue(lineas[c++].equals(el));
             nodo = nodo.getSiguiente();
         }
@@ -186,14 +182,10 @@ public class TestBaseDeDatosPerros {
     @Test public void testCarga() {
         int ini = random.nextInt(1000000);
         String entrada = "";
-        Estudiante[] Perros = new Estudiante[total];
+        Perro[] Perros = new Perro[total];
         for (int i = 0; i < total; i++) {
-            Perros[i] = TestEstudiante.estudianteAleatorio(ini + i);
-            entrada += String.format("%s\t%d\t%2.2f\t%d\n",
-                                     Perros[i].getNombre(),
-                                     Perros[i].getCuenta(),
-                                     Perros[i].getPromedio(),
-                                     Perros[i].getEdad());
+            Perros[i] = TestPerro.PerroAleatorio(ini + i);
+            entrada += String.format("%s\t%s\t%d\t%2.2f\t%2.2f\n", Perros[i].getNombre(), Perros[i].getRaza(), Perros[i].getEdad(), Perros[i].getEstatura(), Perros[i].getPeso());
             bdd.agregaRegistro(Perros[i]);
         }
         try {
@@ -212,17 +204,9 @@ public class TestBaseDeDatosPerros {
             Assert.assertTrue(Perros[c++].equals(nodo.get()));
             nodo = nodo.getSiguiente();
         }
-        entrada = String.format("%s\t%d\t%2.2f\t%d\n",
-                                Perros[0].getNombre(),
-                                Perros[0].getCuenta(),
-                                Perros[0].getPromedio(),
-                                Perros[0].getEdad());
+        entrada = String.format("%s\t%s\t%d\t%2.2f\t%2.2f\n", Perros[0].getNombre(), Perros[0].getRaza(), Perros[0].getEdad(), Perros[0].getEstatura(), Perros[0].getPeso());
         entrada += " \n";
-        entrada += String.format("%s\t%d\t%2.2f\t%d\n",
-                                 Perros[1].getNombre(),
-                                 Perros[1].getCuenta(),
-                                 Perros[1].getPromedio(),
-                                 Perros[1].getEdad());
+        entrada += String.format("%s\t%s\t%d\t%2.2f\t%2.2f\n", Perros[1].getNombre(), Perros[1].getRaza(), Perros[1].getEdad(), Perros[1].getEstatura(), Perros[1].getPeso());
         try {
             StringReader srInt = new StringReader(entrada);
             BufferedReader in = new BufferedReader(srInt, 8192);
@@ -248,154 +232,160 @@ public class TestBaseDeDatosPerros {
      * Prueba unitaria para {@link BaseDeDatosPerros#creaRegistro}.
      */
     @Test public void testCreaRegistro() {
-        Estudiante e = (Estudiante)bdd.creaRegistro();
+        Perro e = (Perro)bdd.creaRegistro();
         Assert.assertTrue(e.getNombre() == null);
-        Assert.assertTrue(e.getCuenta() == 0);
-        Assert.assertTrue(e.getPromedio() == 0.0);
+        Assert.assertTrue(e.getRaza() == null);
         Assert.assertTrue(e.getEdad() == 0);
+        Assert.assertTrue(e.getEstatura() == 0.0);
+        Assert.assertTrue(e.getPeso() == 0.0);
+        
     }
 
     /**
      * Prueba unitaria para {@link BaseDeDatosPerros#buscaRegistros}.
      */
     @Test public void testBuscaRegistros() {
-        Estudiante[] Perros = new Estudiante[total];
+        Perro[] Perros = new Perro[total];
         int ini = 1000000 + random.nextInt(999999);
         for (int i = 0; i < total; i++) {
-            Estudiante e =  new Estudiante(String.valueOf(ini+i),
-                                           ini+i, (i * 10.0) / total, i);
+            Perro e =  new Perro(String.valueOf(ini+i), String.valueOf(ini+1), ini+i, (i * 10.0) / total, (i * 10.0) / total);
             Perros[i] = e;
             bdd.agregaRegistro(e);
         }
 
-        Estudiante estudiante;
+        Perro Perro;
         Lista l;
         Lista.Nodo nodo;
         int i;
 
         for (int k = 0; k < total/10 + 3; k++) {
             i = random.nextInt(total);
-            estudiante = Perros[i];
-
-            String nombre = estudiante.getNombre();
-            l = bdd.buscaRegistros(CampoEstudiante.NOMBRE, nombre);
+            Perro = Perros[i];
+//////////////////////////////////////////////////////////////////////////////////
+            String nombre = Perro.getNombre();
+            l = bdd.buscaRegistros(CampoPerro.NOMBRE, nombre);
             Assert.assertTrue(l.getLongitud() > 0);
-            Assert.assertTrue(l.contiene(estudiante));
+            Assert.assertTrue(l.contiene(Perro));
             nodo = l.getCabeza();
             while (nodo != null) {
-                Estudiante e = (Estudiante)nodo.get();
+                Perro e = (Perro)nodo.get();
                 Assert.assertTrue(e.getNombre().indexOf(nombre) > -1);
                 nodo = nodo.getSiguiente();
             }
             int n = nombre.length();
             String bn = nombre.substring(random.nextInt(2),
                                          2 + random.nextInt(n-2));
-            l = bdd.buscaRegistros(CampoEstudiante.NOMBRE, bn);
+            l = bdd.buscaRegistros(CampoPerro.NOMBRE, bn);
             Assert.assertTrue(l.getLongitud() > 0);
-            Assert.assertTrue(l.contiene(estudiante));
+            Assert.assertTrue(l.contiene(Perro));
             nodo = l.getCabeza();
             while (nodo != null) {
-                Estudiante e = (Estudiante)nodo.get();
+                Perro e = (Perro)nodo.get();
                 Assert.assertTrue(e.getNombre().indexOf(bn) > -1);
                 nodo = nodo.getSiguiente();
             }
-
-            Integer cuenta = Integer.valueOf(estudiante.getCuenta());
-            l = bdd.buscaRegistros(CampoEstudiante.CUENTA, cuenta);
-            Assert.assertTrue(l.getLongitud() > 0);
-            Assert.assertTrue(l.contiene(estudiante));
-            nodo = l.getCabeza();
+////////////////////////////////////////////////////////////////////////////////////
+            String raza = Perro.getRaza();
+            r = bdd.buscaRegistros(CampoPerro.RAZA, raza);
+            Assert.assertTrue(r.getLongitud() > 0);
+            Assert.assertTrue(r.contiene(Perro));
+            nodo = r.getCabeza();
             while (nodo != null) {
-                Estudiante e = (Estudiante)nodo.get();
-                Assert.assertTrue(e.getCuenta() >= cuenta.intValue());
+                Perro e = (Perro)nodo.get();
+                Assert.assertTrue(e.getRaza().indexOf(raza) > -1);
                 nodo = nodo.getSiguiente();
             }
-            Integer bc = Integer.valueOf(cuenta.intValue() - 10);
-            l = bdd.buscaRegistros(CampoEstudiante.CUENTA, bc);
-            Assert.assertTrue(l.getLongitud() > 0);
-            Assert.assertTrue(l.contiene(estudiante));
-            nodo = l.getCabeza();
+            int n = raza.length();
+            String bn = raza.substring(random.nextInt(2),
+                                         2 + random.nextInt(n-2));
+            r = bdd.buscaRegistros(CampoPerro.RAZA, bn);
+            Assert.assertTrue(r.getLongitud() > 0);
+            Assert.assertTrue(r.contiene(Perro));
+            nodo = r.getCabeza();
             while (nodo != null) {
-                Estudiante e = (Estudiante)nodo.get();
-                Assert.assertTrue(e.getCuenta() >= bc.intValue());
+                Perro e = (Perro)nodo.get();
+                Assert.assertTrue(e.getNombre().indexOf(bn) > -1);
                 nodo = nodo.getSiguiente();
             }
-
-            Double promedio = Double.valueOf(estudiante.getPromedio());
-            l = bdd.buscaRegistros(CampoEstudiante.PROMEDIO, promedio);
+//////////////////////////////////////////////////////////////////////////////////////
+            Integer edad = Integer.valueOf(Perro.getEdad());
+            l = bdd.buscaRegistros(CampoPerro.EDAD, edad);
             Assert.assertTrue(l.getLongitud() > 0);
-            Assert.assertTrue(l.contiene(estudiante));
+            Assert.assertTrue(l.contiene(Perro));
             nodo = l.getCabeza();
             while (nodo != null) {
-                Estudiante e = (Estudiante)nodo.get();
-                Assert.assertTrue(e.getPromedio() >= promedio.doubleValue());
-                nodo = nodo.getSiguiente();
-            }
-            Double bp = Double.valueOf(promedio.doubleValue() - 5.0);
-            l = bdd.buscaRegistros(CampoEstudiante.PROMEDIO, bp);
-            Assert.assertTrue(l.getLongitud() > 0);
-            Assert.assertTrue(l.contiene(estudiante));
-            nodo = l.getCabeza();
-            while (nodo != null) {
-                Estudiante e = (Estudiante)nodo.get();
-                Assert.assertTrue(e.getPromedio() >= bp.doubleValue());
-                nodo = nodo.getSiguiente();
-            }
-
-            Integer edad = Integer.valueOf(estudiante.getEdad());
-            l = bdd.buscaRegistros(CampoEstudiante.EDAD, edad);
-            Assert.assertTrue(l.getLongitud() > 0);
-            Assert.assertTrue(l.contiene(estudiante));
-            nodo = l.getCabeza();
-            while (nodo != null) {
-                Estudiante e = (Estudiante)nodo.get();
+                Perro e = (Perro)nodo.get();
                 Assert.assertTrue(e.getEdad() >= edad.intValue());
                 nodo = nodo.getSiguiente();
             }
             Integer be = Integer.valueOf(edad.intValue() - 10);
-            l = bdd.buscaRegistros(CampoEstudiante.EDAD, be);
+            l = bdd.buscaRegistros(CampoPerro.EDAD, be);
             Assert.assertTrue(l.getLongitud() > 0);
-            Assert.assertTrue(l.contiene(estudiante));
+            Assert.assertTrue(l.contiene(Perro));
             nodo = l.getCabeza();
             while (nodo != null) {
-                Estudiante e = (Estudiante)nodo.get();
+                Perro e = (Perro)nodo.get();
                 Assert.assertTrue(e.getEdad() >= be.intValue());
                 nodo = nodo.getSiguiente();
             }
+/////////////////////////////////////////////////////////////////////////////////////////////////            
+
+            Double estatura = Double.valueOf(Perro.getPromedio());
+            l = bdd.buscaRegistros(CampoPerro.PROMEDIO, estatura);
+            Assert.assertTrue(l.getLongitud() > 0);
+            Assert.assertTrue(l.contiene(Perro));
+            nodo = l.getCabeza();
+            while (nodo != null) {
+                Perro e = (Perro)nodo.get();
+                Assert.assertTrue(e.getPromedio() >= estatura.doubleValue());
+                nodo = nodo.getSiguiente();
+            }
+            Double bp = Double.valueOf(estatura.doubleValue() - 5.0);
+            l = bdd.buscaRegistros(CampoPerro.PROMEDIO, bp);
+            Assert.assertTrue(l.getLongitud() > 0);
+            Assert.assertTrue(l.contiene(Perro));
+            nodo = l.getCabeza();
+            while (nodo != null) {
+                Perro e = (Perro)nodo.get();
+                Assert.assertTrue(e.getPromedio() >= bp.doubleValue());
+                nodo = nodo.getSiguiente();
+            }
+
+            
         }
 
-        l = bdd.buscaRegistros(CampoEstudiante.NOMBRE,
+        l = bdd.buscaRegistros(CampoPerro.NOMBRE,
                                "xxx-nombre");
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoEstudiante.CUENTA,
+        l = bdd.buscaRegistros(CampoPerro.CUENTA,
                                Integer.valueOf(9123456));
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoEstudiante.PROMEDIO,
+        l = bdd.buscaRegistros(CampoPerro.PROMEDIO,
                                Double.valueOf(97.12));
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoEstudiante.EDAD,
+        l = bdd.buscaRegistros(CampoPerro.EDAD,
                                Integer.valueOf(127));
         Assert.assertTrue(l.esVacia());
 
-        l = bdd.buscaRegistros(CampoEstudiante.NOMBRE, "");
+        l = bdd.buscaRegistros(CampoPerro.NOMBRE, "");
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoEstudiante.CUENTA,
+        l = bdd.buscaRegistros(CampoPerro.CUENTA,
                                Integer.valueOf(Integer.MAX_VALUE));
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoEstudiante.PROMEDIO,
+        l = bdd.buscaRegistros(CampoPerro.PROMEDIO,
                                Double.valueOf(Double.MAX_VALUE));
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoEstudiante.EDAD,
+        l = bdd.buscaRegistros(CampoPerro.EDAD,
                                Integer.valueOf(Integer.MAX_VALUE));
         Assert.assertTrue(l.esVacia());
 
-        l = bdd.buscaRegistros(CampoEstudiante.NOMBRE, null);
+        l = bdd.buscaRegistros(CampoPerro.NOMBRE, null);
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoEstudiante.CUENTA, null);
+        l = bdd.buscaRegistros(CampoPerro.CUENTA, null);
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoEstudiante.PROMEDIO, null);
+        l = bdd.buscaRegistros(CampoPerro.PROMEDIO, null);
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoEstudiante.EDAD, null);
+        l = bdd.buscaRegistros(CampoPerro.EDAD, null);
         Assert.assertTrue(l.esVacia());
 
         try {
