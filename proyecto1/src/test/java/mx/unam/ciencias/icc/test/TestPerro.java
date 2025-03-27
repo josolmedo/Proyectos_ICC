@@ -58,7 +58,7 @@ public class TestPerro {
      * @return una edad aleatoria.
      */
     public static int edadAleatoria() {
-        return 17 + random.nextInt(73);
+        return 1 + random.nextInt(13);
     }
 
     
@@ -67,9 +67,20 @@ public class TestPerro {
      * Genera un estatura aleatorio.
      * @return un estatura aleatorio.
      */
-    public static double estaturaAleatorio() {
+    public static double estaturaAleatoria() {
         /* Estúpida precisión. */
-        return random.nextInt(100) / 10.0;
+        return 20 + random.nextDouble() * 45; // 20 + [0, 45) → [20, 65)
+        
+    }
+
+    /**
+     * Genera un estatura aleatorio.
+     * @return un estatura aleatorio.
+     */
+    public static double pesoAleatorio() {
+        /* Estúpida precisión. */
+        return 3 + random.nextDouble() * 30; // 20 + [0, 45) → [20, 65)
+        
     }
 
     
@@ -81,20 +92,18 @@ public class TestPerro {
     public static Perro PerroAleatorio() {
         return new Perro(nombreAleatorio(),
                               razaAleatoria(),
-                              estaturaAleatorio(),
-                              edadAleatoria());
+                              edadAleatoria(),
+                              estaturaAleatoria(),
+                              pesoAleatorio());
     }
 
     /**
-     * Genera un Perro aleatorio con un número de raza dado.
-     * @param raza el número de raza del nuevo Perro.
+     * Genera un Perro aleatorio con una edad dada.
+     * @param edad la edad del nuevo Perro.
      * @return un Perro aleatorio.
      */
-    public static Perro PerroAleatorio(int raza) {
-        return new Perro(nombreAleatorio(),
-                              raza,
-                              estaturaAleatorio(),
-                              edadAleatoria());
+    public static Perro PerroAleatorio(int edad) {
+        return new Perro(nombreAleatorio(), razaAleatoria(), edad, estaturaAleatoria(), pesoAleatorio());
     }
 
     /* El Perro. */
@@ -113,14 +122,15 @@ public class TestPerro {
     @Test public void testConstructor() {
         String nombre = nombreAleatorio();
         String raza = razaAleatoria();
-        double estatura = estaturaAleatorio();
         int edad = edadAleatoria();
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
         Perro = new Perro(nombre, raza, edad, estatura, peso);
         Assert.assertTrue(Perro.getNombre().equals(nombre));
         Assert.assertTrue(Perro.getRaza() == raza);
-        Assert.assertTrue(Perro.getEdad() = edad);
-        Assert.assertTrue(Perro.getEstatura() == estatura);
         Assert.assertTrue(Perro.getEdad() == edad);
+        Assert.assertTrue(Perro.getEstatura() == estatura);
+        Assert.assertTrue(Perro.getPeso() == peso);
     }
 
     /**
@@ -128,10 +138,11 @@ public class TestPerro {
      */
     @Test public void testGetNombre() {
         String nombre = nombreAleatorio();
-        int raza = razaAleatoria();
-        double estatura = estaturaAleatorio();
+        String raza = razaAleatoria();
         int edad = edadAleatoria();
-        Perro = new Perro(nombre, raza, estatura, edad);
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
         Assert.assertTrue(Perro.getNombre().equals(nombre));
         Assert.assertFalse(Perro.getNombre().equals(nombre + " X"));
     }
@@ -142,10 +153,10 @@ public class TestPerro {
     @Test public void testSetNombre() {
         String nombre = nombreAleatorio();
         String nuevoNombre = nombre + " X";
-        int raza = razaAleatoria();
-        double estatura = estaturaAleatorio();
-        int edad = edadAleatoria();
-        Perro = new Perro(nombre, raza, estatura, edad);
+        String raza = razaAleatoria();
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
         Assert.assertTrue(Perro.getNombre().equals(nombre));
         Assert.assertFalse(Perro.getNombre().equals(nuevoNombre));
         Perro.setNombre(nuevoNombre);
@@ -156,61 +167,32 @@ public class TestPerro {
     /**
      * Prueba unitaria para {@link Perro#getraza}.
      */
-    @Test public void testGetraza() {
+    @Test public void testGetraza() {        
         String nombre = nombreAleatorio();
-        int raza = razaAleatoria();
-        double estatura = estaturaAleatorio();
+        String raza = razaAleatoria();
         int edad = edadAleatoria();
-        Perro = new Perro(nombre, raza, estatura, edad);
-        Assert.assertTrue(Perro.getraza() == raza);
-        Assert.assertFalse(Perro.getraza() == raza + 100);
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
+        Assert.assertTrue(Perro.getraza().equals(raza));
+        Assert.assertFalse(Perro.getraza().equals(raza + " X"));
     }
 
     /**
      * Prueba unitaria para {@link Perro#setraza}.
      */
     @Test public void testSetraza() {
-        String nombre = nombreAleatorio();
-        int raza = razaAleatoria();
-        int nuevaraza = raza + 100;
-        double estatura = estaturaAleatorio();
-        int edad = edadAleatoria();
-        Perro = new Perro(nombre, raza, estatura, edad);
-        Assert.assertTrue(Perro.getraza() == raza);
-        Assert.assertFalse(Perro.getraza() == raza + 100);
-        Perro.setraza(nuevaraza);
-        Assert.assertFalse(Perro.getraza() == raza);
-        Assert.assertTrue(Perro.getraza() == nuevaraza);
-    }
-
-    /**
-     * Prueba unitaria para {@link Perro#getestatura}.
-     */
-    @Test public void testGetestatura() {
-        String nombre = nombreAleatorio();
-        int raza = razaAleatoria();
-        double estatura = estaturaAleatorio();
-        int edad = edadAleatoria();
-        Perro = new Perro(nombre, raza, estatura, edad);
-        Assert.assertTrue(Perro.getestatura() == estatura);
-        Assert.assertFalse(Perro.getestatura() == estatura + 1.0);
-    }
-
-    /**
-     * Prueba unitaria para {@link Perro#setestatura}.
-     */
-    @Test public void testSetestatura() {
-        String nombre = nombreAleatorio();
-        int raza = razaAleatoria();
-        double estatura = estaturaAleatorio();
-        double nuevoestatura = estatura + 1.0;
-        int edad = edadAleatoria();
-        Perro = new Perro(nombre, raza, estatura, edad);
-        Assert.assertTrue(Perro.getestatura() == estatura);
-        Assert.assertFalse(Perro.getestatura() == nuevoestatura);
-        Perro.setestatura(nuevoestatura);
-        Assert.assertFalse(Perro.getestatura() == estatura);
-        Assert.assertTrue(Perro.getestatura() == nuevoestatura);
+        String nombre = nombreAleatorio();        
+        String raza = razaAleatoria();
+        String nuevaRaza = raza + " X";
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
+        Assert.assertTrue(Perro.getRaza().equals(raza));
+        Assert.assertFalse(Perro.getRaza().equals(nuevaRaza));
+        Perro.setRaza(nuevaRaza);
+        Assert.assertFalse(Perro.getRaza().equals(raza));
+        Assert.assertTrue(Perro.getRaza().equals(nuevaRaza));
     }
 
     /**
@@ -218,10 +200,11 @@ public class TestPerro {
      */
     @Test public void testGetEdad() {
         String nombre = nombreAleatorio();
-        int raza = razaAleatoria();
-        double estatura = estaturaAleatorio();
+        String raza = razaAleatoria();
         int edad = edadAleatoria();
-        Perro = new Perro(nombre, raza, estatura, edad);
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
         Assert.assertTrue(Perro.getEdad() == edad);
         Assert.assertFalse(Perro.getEdad() == edad + 50);
     }
@@ -231,11 +214,12 @@ public class TestPerro {
      */
     @Test public void testSetEdad() {
         String nombre = nombreAleatorio();
-        int raza = razaAleatoria();
-        double estatura = estaturaAleatorio();
+        String raza = razaAleatoria();
         int edad = edadAleatoria();
         int nuevaEdad = edad + 50;
-        Perro = new Perro(nombre, raza, estatura, edad);
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);        
         Assert.assertTrue(Perro.getEdad() == edad);
         Assert.assertFalse(Perro.getEdad() == nuevaEdad);
         Perro.setEdad(nuevaEdad);
@@ -243,30 +227,90 @@ public class TestPerro {
         Assert.assertTrue(Perro.getEdad() == nuevaEdad);
     }
 
+
+    /**
+     * Prueba unitaria para {@link Perro#getestatura}.
+     */
+    @Test public void testGetestatura() {
+        String nombre = nombreAleatorio();
+        String raza = razaAleatoria();
+        int edad = edadAleatoria();
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
+        Assert.assertTrue(Perro.getestatura() == estatura);
+        Assert.assertFalse(Perro.getestatura() == estatura + 1.0);
+    }
+
+    /**
+     * Prueba unitaria para {@link Perro#setestatura}.
+     */
+    @Test public void testSetestatura() {
+        String nombre = nombreAleatorio();
+        String raza = razaAleatoria();
+        int edad = edadAleatoria();
+        double estatura = estaturaAleatoria();
+        double nuevoestatura = estatura + 1.0;
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
+        Assert.assertTrue(Perro.getestatura() == estatura);
+        Assert.assertFalse(Perro.getestatura() == nuevoestatura);
+        Perro.setestatura(nuevoestatura);
+        Assert.assertFalse(Perro.getestatura() == estatura);
+        Assert.assertTrue(Perro.getestatura() == nuevoestatura);
+    }
+
+
+    /**
+     * Prueba unitaria para {@link Perro#getestatura}.
+     */
+    @Test public void testGetpeso() {
+        String nombre = nombreAleatorio();
+        String raza = razaAleatoria();
+        int edad = edadAleatoria();
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
+        Assert.assertTrue(Perro.getPeso() == peso);
+        Assert.assertFalse(Perro.getPeso() == peso + 1.0);
+    }
+
+    /**
+     * Prueba unitaria para {@link Perro#setestatura}.
+     */
+    @Test public void testSetpeso() {
+        String nombre = nombreAleatorio();
+        String raza = razaAleatoria();
+        int edad = edadAleatoria();
+        double estatura = estaturaAleatoria();
+        double nuevopeso = estatura + 1.0;
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
+        Assert.assertTrue(Perro.getPeso() == peso);
+        Assert.assertFalse(Perro.getPeso() == nuevopeso);
+        Perro.setestatura(nuevopeso);
+        Assert.assertFalse(Perro.getPeso() == peso);
+        Assert.assertTrue(Perro.getPeso() == nuevopeso);
+    }
+
+    
     /**
      * Prueba unitaria para {@link Perro#toString}.
      */
     @Test public void testToString() {
         String nombre = nombreAleatorio();
-        int raza = razaAleatoria();
-        double estatura = estaturaAleatorio();
+        String raza = razaAleatoria();
         int edad = edadAleatoria();
-        Perro = new Perro(nombre, raza, estatura, edad);
-        String cadena = String.format("Nombre   : %s\n" +
-                                      "raza   : %09d\n" +
-                                      "estatura : %2.2f\n" +
-                                      "Edad     : %d",
-                                      nombre, raza, estatura, edad);
+        double estatura = estaturaAleatoria();
+        double peso = pesoAleatorio();
+        Perro = new Perro(nombre, raza, edad, estatura, peso);
+        String cadena = String.format("Nombre: %s\n" + "Raza: %s\n" + "Edad: %d\n" + "Estatura: %2.2f\n" + "Peso: %2.2f\n", nombre, raza, edad, estatura, peso);
         Assert.assertTrue(Perro.toString().equals(cadena));
-        raza = 213;
-        estatura = 0.99;
-        Perro.setraza(raza);
-        Perro.setestatura(estatura);
-        cadena = String.format("Nombre   : %s\n" +
-                               "raza   : %09d\n" +
-                               "estatura : %2.2f\n" +
-                               "Edad     : %d",
-                               nombre, raza, estatura, edad);
+        edad = 7;
+        estatura = 40.22;
+        Perro.setEdad(raza);
+        Perro.setEstatura(estatura);
+        cadena = String.format("Nombre: %s\n" + "Raza: %s\n" + "Edad: %d\n" + "Estatura: %2.2f\n" + "Peso: %2.2f\n", nombre, raza, edad, estatura, peso);
         Assert.assertTrue(Perro.toString().equals(cadena));
     }
 
