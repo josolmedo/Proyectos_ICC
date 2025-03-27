@@ -26,11 +26,17 @@ public class TestCampoPerro {
     @Test public void testToString() {
         String s = CampoPerro.NOMBRE.toString();
         Assert.assertTrue(s.equals("Nombre"));
-        s = CampoPerro.CUENTA.toString();
-        Assert.assertTrue(s.equals("# Cuenta"));
-        s = CampoPerro.PROMEDIO.toString();
-        Assert.assertTrue(s.equals("Promedio"));
+
+        s = CampoPerro.RAZA.toString();
+        Assert.assertTrue(s.equals("Raza"));
+
         s = CampoPerro.EDAD.toString();
         Assert.assertTrue(s.equals("Edad"));
+
+        s = CampoPerro.ESTATURA.toString();
+        Assert.assertTrue(s.equals("Estatura"));
+
+        s = CampoPerro.PESO.toString();
+        Assert.assertTrue(s.equals("Peso"));
     }
 }
