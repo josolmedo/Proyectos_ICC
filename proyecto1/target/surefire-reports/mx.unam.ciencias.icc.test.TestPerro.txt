@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: mx.unam.ciencias.icc.test.TestLista
+Test set: mx.unam.ciencias.icc.test.TestPerro
 -------------------------------------------------------------------------------
-Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.466 sec
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec

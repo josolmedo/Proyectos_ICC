@@ -299,8 +299,8 @@ public class TestBaseDeDatosPerros {
             String cn = raza.substring(random.nextInt(2),
                                          2 + random.nextInt(ra-2));
             l = bdd.buscaRegistros(CampoPerro.RAZA, cn);
-            Assert.assertTrue(ra.getLongitud() > 0);
-            Assert.assertTrue(ra.contiene(Perro));
+            Assert.assertTrue(l.getLongitud() > 0);
+            Assert.assertTrue(l.contiene(Perro));
             nodo = l.getCabeza();
             while (nodo != null) {
                 Perro e = (Perro)nodo.get();
