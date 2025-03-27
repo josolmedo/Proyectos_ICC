@@ -286,25 +286,25 @@ public class TestBaseDeDatosPerros {
             }
 ////////////////////////////////////////////////////////////////////////////////////
             String raza = Perro.getRaza();
-            r = bdd.buscaRegistros(CampoPerro.RAZA, raza);
-            Assert.assertTrue(r.getLongitud() > 0);
-            Assert.assertTrue(r.contiene(Perro));
-            nodo = r.getCabeza();
+            l = bdd.buscaRegistros(CampoPerro.RAZA, raza);
+            Assert.assertTrue(l.getLongitud() > 0);
+            Assert.assertTrue(l.contiene(Perro));
+            nodo = l.getCabeza();
             while (nodo != null) {
                 Perro e = (Perro)nodo.get();
                 Assert.assertTrue(e.getRaza().indexOf(raza) > -1);
                 nodo = nodo.getSiguiente();
             }
-            int n = raza.length();
-            String bn = raza.substring(random.nextInt(2),
-                                         2 + random.nextInt(n-2));
-            r = bdd.buscaRegistros(CampoPerro.RAZA, bn);
-            Assert.assertTrue(r.getLongitud() > 0);
-            Assert.assertTrue(r.contiene(Perro));
-            nodo = r.getCabeza();
+            int ra = raza.length();
+            String cn = raza.substring(random.nextInt(2),
+                                         2 + random.nextInt(ra-2));
+            l = bdd.buscaRegistros(CampoPerro.RAZA, cn);
+            Assert.assertTrue(ra.getLongitud() > 0);
+            Assert.assertTrue(ra.contiene(Perro));
+            nodo = l.getCabeza();
             while (nodo != null) {
                 Perro e = (Perro)nodo.get();
-                Assert.assertTrue(e.getNombre().indexOf(bn) > -1);
+                Assert.assertTrue(e.getNombre().indexOf(cn) > -1);
                 nodo = nodo.getSiguiente();
             }
 //////////////////////////////////////////////////////////////////////////////////////
@@ -330,62 +330,86 @@ public class TestBaseDeDatosPerros {
             }
 /////////////////////////////////////////////////////////////////////////////////////////////////            
 
-            Double estatura = Double.valueOf(Perro.getPromedio());
-            l = bdd.buscaRegistros(CampoPerro.PROMEDIO, estatura);
+            Double estatura = Double.valueOf(Perro.getEstatura());
+            l = bdd.buscaRegistros(CampoPerro.ESTATURA, estatura);
             Assert.assertTrue(l.getLongitud() > 0);
             Assert.assertTrue(l.contiene(Perro));
             nodo = l.getCabeza();
             while (nodo != null) {
                 Perro e = (Perro)nodo.get();
-                Assert.assertTrue(e.getPromedio() >= estatura.doubleValue());
+                Assert.assertTrue(e.getEstatura() >= estatura.doubleValue());
                 nodo = nodo.getSiguiente();
             }
             Double bp = Double.valueOf(estatura.doubleValue() - 5.0);
-            l = bdd.buscaRegistros(CampoPerro.PROMEDIO, bp);
+            l = bdd.buscaRegistros(CampoPerro.ESTATURA, bp);
             Assert.assertTrue(l.getLongitud() > 0);
             Assert.assertTrue(l.contiene(Perro));
             nodo = l.getCabeza();
             while (nodo != null) {
                 Perro e = (Perro)nodo.get();
-                Assert.assertTrue(e.getPromedio() >= bp.doubleValue());
+                Assert.assertTrue(e.getEstatura() >= bp.doubleValue());
                 nodo = nodo.getSiguiente();
             }
+/////////////////////////////////////////////////////////////////////////////////////////////////
+            Double peso = Double.valueOf(Perro.getPeso());
+            l = bdd.buscaRegistros(CampoPerro.PESO, peso);
+            Assert.assertTrue(l.getLongitud() > 0);
+            Assert.assertTrue(l.contiene(Perro));
+            nodo = l.getCabeza();
+            while (nodo != null) {
+                Perro e = (Perro)nodo.get();
+                Assert.assertTrue(e.getPeso() >= peso.doubleValue());
+                nodo = nodo.getSiguiente();
+            }
+            Double pb = Double.valueOf(peso.doubleValue() - 5.0);
+            l = bdd.buscaRegistros(CampoPerro.PESO, pb);
+            Assert.assertTrue(l.getLongitud() > 0);
+            Assert.assertTrue(l.contiene(Perro));
+            nodo = l.getCabeza();
+            while (nodo != null) {
+                Perro e = (Perro)nodo.get();
+                Assert.assertTrue(e.getPeso() >= pb.doubleValue());
+                nodo = nodo.getSiguiente();
+            }
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
             
         }
 
-        l = bdd.buscaRegistros(CampoPerro.NOMBRE,
-                               "xxx-nombre");
+        l = bdd.buscaRegistros(CampoPerro.NOMBRE, "xxx-nombre");
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoPerro.CUENTA,
-                               Integer.valueOf(9123456));
+        l = bdd.buscaRegistros(CampoPerro.RAZA, "xxx-raza");
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoPerro.PROMEDIO,
-                               Double.valueOf(97.12));
+        l = bdd.buscaRegistros(CampoPerro.EDAD, Integer.valueOf(127));
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoPerro.EDAD,
-                               Integer.valueOf(127));
+        l = bdd.buscaRegistros(CampoPerro.ESTATURA, Double.valueOf(97.12));
         Assert.assertTrue(l.esVacia());
+        l = bdd.buscaRegistros(CampoPerro.PESO, Double.valueOf(67.55));
+        Assert.assertTrue(l.esVacia());
+        
 
         l = bdd.buscaRegistros(CampoPerro.NOMBRE, "");
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoPerro.CUENTA,
-                               Integer.valueOf(Integer.MAX_VALUE));
+        l = bdd.buscaRegistros(CampoPerro.RAZA, "");
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoPerro.PROMEDIO,
-                               Double.valueOf(Double.MAX_VALUE));
+        l = bdd.buscaRegistros(CampoPerro.EDAD, Integer.valueOf(Integer.MAX_VALUE));
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoPerro.EDAD,
-                               Integer.valueOf(Integer.MAX_VALUE));
+        l = bdd.buscaRegistros(CampoPerro.ESTATURA, Double.valueOf(Double.MAX_VALUE));
         Assert.assertTrue(l.esVacia());
+        l = bdd.buscaRegistros(CampoPerro.PESO, Double.valueOf(Double.MAX_VALUE));
+        Assert.assertTrue(l.esVacia());
+        
 
         l = bdd.buscaRegistros(CampoPerro.NOMBRE, null);
         Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoPerro.CUENTA, null);
-        Assert.assertTrue(l.esVacia());
-        l = bdd.buscaRegistros(CampoPerro.PROMEDIO, null);
+        l = bdd.buscaRegistros(CampoPerro.RAZA, null);
         Assert.assertTrue(l.esVacia());
         l = bdd.buscaRegistros(CampoPerro.EDAD, null);
+        Assert.assertTrue(l.esVacia());
+        l = bdd.buscaRegistros(CampoPerro.ESTATURA, null);
+        Assert.assertTrue(l.esVacia());
+        l = bdd.buscaRegistros(CampoPerro.PESO, null);
         Assert.assertTrue(l.esVacia());
 
         try {
