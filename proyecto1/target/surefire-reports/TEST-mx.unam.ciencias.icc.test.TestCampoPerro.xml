@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="mx.unam.ciencias.icc.test.TestCampoPerro" time="0.003" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="mx.unam.ciencias.icc.test.TestCampoPerro" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.26+4-post-Ubuntu-1ubuntu122.04"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/joseangel/Documentos/Proyectos_ICC/proyecto1"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/joseangel/Documentos/CienciasDeLaComputacion/Proyectos_ICC/proyecto1"/>
     <property name="java.vm.vendor" value="Ubuntu"/>
     <property name="java.vendor.url" value="https://ubuntu.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/joseangel/Documentos/Proyectos_ICC/proyecto1"/>
+    <property name="user.dir" value="/home/joseangel/Documentos/CienciasDeLaComputacion/Proyectos_ICC/proyecto1"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="java.runtime.version" value="11.0.26+4-post-Ubuntu-1ubuntu122.04"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
@@ -32,7 +32,7 @@
     <property name="java.class.version" value="55.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="6.8.0-52-generic"/>
+    <property name="os.version" value="6.8.0-57-generic"/>
     <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
     <property name="user.home" value="/home/joseangel"/>
     <property name="user.timezone" value="America/Mexico_City"/>
@@ -61,5 +61,5 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="mx.unam.ciencias.icc.test.TestCampoPerro" name="testToString" time="0.003"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestCampoPerro" name="testToString" time="0"/>
 </testsuite>

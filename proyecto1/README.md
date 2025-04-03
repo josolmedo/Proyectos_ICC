@@ -19,15 +19,15 @@ $ mvn test
 ```
 
 Por último, se debe ejecutar correctamente el programa escrito en la clase
-[Proyecto1](main/src/main/java/mx/unam/ciencias/icc/Proyecto1.java)
+[Proyecto1](main/src/main/java/mx/unam/ciencias/icc/Practica5.java)
 al hacer:
 
 ```
 $ mvn install
 ...
-$ java -jar target/proyecto1.jar -g archivo.db # guarda la base de datos
+$ java -jar target/practica5.jar -g archivo.db # guarda la base de datos
 ...
-$ java -jar target/proyecto1.jar -c archivo.db # carga la base de datos
+$ java -jar target/practica5.jar -c archivo.db # carga la base de datos
 ```
 
 

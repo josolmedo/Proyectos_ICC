@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: mx.unam.ciencias.icc.test.TestBaseDeDatosPerros
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.064 sec <<< FAILURE!
-testCarga(mx.unam.ciencias.icc.test.TestBaseDeDatosPerros)  Time elapsed: 0.029 sec  <<< FAILURE!
+Tests run: 10, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.059 sec <<< FAILURE!
+testCarga(mx.unam.ciencias.icc.test.TestBaseDeDatosPerros)  Time elapsed: 0.003 sec  <<< FAILURE!
 java.lang.AssertionError
 	at org.junit.Assert.fail(Assert.java:87)
 	at org.junit.Assert.assertTrue(Assert.java:42)
@@ -21,7 +21,7 @@ java.lang.AssertionError
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
 	at java.base/java.lang.Thread.run(Thread.java:829)
 
-testBuscaRegistros(mx.unam.ciencias.icc.test.TestBaseDeDatosPerros)  Time elapsed: 0.008 sec  <<< FAILURE!
+testBuscaRegistros(mx.unam.ciencias.icc.test.TestBaseDeDatosPerros)  Time elapsed: 0.009 sec  <<< FAILURE!
 java.lang.AssertionError
 	at org.junit.Assert.fail(Assert.java:87)
 	at org.junit.Assert.assertTrue(Assert.java:42)

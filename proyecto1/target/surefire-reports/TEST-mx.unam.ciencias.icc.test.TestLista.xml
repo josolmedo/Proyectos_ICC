@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="21" failures="0" name="mx.unam.ciencias.icc.test.TestLista" time="0.276" errors="0" skipped="0">
+<testsuite tests="21" failures="0" name="mx.unam.ciencias.icc.test.TestLista" time="0.379" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.26+4-post-Ubuntu-1ubuntu122.04"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/joseangel/Documentos/Proyectos_ICC/proyecto1"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/joseangel/Documentos/CienciasDeLaComputacion/Proyectos_ICC/proyecto1"/>
     <property name="java.vm.vendor" value="Ubuntu"/>
     <property name="java.vendor.url" value="https://ubuntu.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/joseangel/Documentos/Proyectos_ICC/proyecto1"/>
+    <property name="user.dir" value="/home/joseangel/Documentos/CienciasDeLaComputacion/Proyectos_ICC/proyecto1"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="java.runtime.version" value="11.0.26+4-post-Ubuntu-1ubuntu122.04"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
@@ -32,7 +32,7 @@
     <property name="java.class.version" value="55.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="6.8.0-52-generic"/>
+    <property name="os.version" value="6.8.0-57-generic"/>
     <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
     <property name="user.home" value="/home/joseangel"/>
     <property name="user.timezone" value="America/Mexico_City"/>
@@ -43,7 +43,7 @@
     <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
     <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -61,25 +61,25 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testAgregaFinal" time="0.026"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testElimina" time="0.002"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testAgregaFinal" time="0.024"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testElimina" time="0.003"/>
   <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testEsVacia" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testEliminaPrimero" time="0.004"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGet" time="0.044"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testEliminaPrimero" time="0.001"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGet" time="0.043"/>
   <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testAgregaInicio" time="0.003"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testCopia" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testToString" time="0.097"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetLongitud" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetRabo" time="0.003"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testEliminaUltimo" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetPrimero" time="0.003"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testCopia" time="0.003"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testToString" time="0.222"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetLongitud" time="0.006"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetRabo" time="0.004"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testEliminaUltimo" time="0"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetPrimero" time="0.007"/>
   <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testContiene" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testReversa" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testIndiceDe" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetCabeza" time="0.005"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testEquals" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testLimpia" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetUltimo" time="0.004"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testInserta" time="0.066"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testConstructor" time="0.001"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testReversa" time="0.003"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testIndiceDe" time="0.007"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetCabeza" time="0.002"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testEquals" time="0.007"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testLimpia" time="0.003"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testGetUltimo" time="0.017"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testInserta" time="0.014"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestLista" name="testConstructor" time="0.006"/>
 </testsuite>
