@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="1" name="mx.unam.ciencias.icc.test.TestPerro" time="0.037" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="mx.unam.ciencias.icc.test.TestPerro" time="0.053" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.26+4-post-Ubuntu-1ubuntu122.04"/>
@@ -43,7 +43,7 @@
     <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
     <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -61,40 +61,20 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testSeria" time="0"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testCasa" time="0"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testToString" time="0.001"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testSetestatura" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetestatura" time="0.009"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetEdad" time="0"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetpeso" time="0"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetraza" time="0.004"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testSeria" time="0.006"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testCasa" time="0.009"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testToString" time="0.003"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testSetestatura" time="0.006"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetestatura" time="0.001"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetEdad" time="0.002"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetpeso" time="0.002"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetraza" time="0.003"/>
   <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testSetNombre" time="0.003"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testDeseria" time="0.003">
-    <failure message="expected:&lt;20.93532081252186&gt; but was:&lt;20.94&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;20.93532081252186&gt; but was:&lt;20.94&gt;
-	at org.junit.Assert.fail(Assert.java:89)
-	at org.junit.Assert.failNotEquals(Assert.java:835)
-	at org.junit.Assert.assertEquals(Assert.java:555)
-	at org.junit.Assert.assertEquals(Assert.java:685)
-	at mx.unam.ciencias.icc.test.TestPerro.testDeseria(TestPerro.java:399)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:299)
-	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:293)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-</failure>
-  </testcase>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testEquals" time="0.003"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetNombre" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testSetEdad" time="0.001"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testDeseria" time="0.004"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testEquals" time="0.002"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testGetNombre" time="0.003"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testSetEdad" time="0.002"/>
   <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testSetpeso" time="0.001"/>
   <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testSetraza" time="0.002"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testConstructor" time="0.006"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestPerro" name="testConstructor" time="0.004"/>
 </testsuite>

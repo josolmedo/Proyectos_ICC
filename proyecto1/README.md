@@ -36,7 +36,7 @@ $ java -jar target/practica5.jar -c archivo.db # carga la base de datos
 Pueden clonar el proyecto con el siguiente comando:
 
 ```
-$ git clone <liga>
+$ git clone https://github.com/josolmedo/Proyectos_ICC.git
 ```
 
 ### Documentación
@@ -44,4 +44,4 @@ $ git clone <liga>
 La documentación generada por JavaDoc la pueden consultar aquí:
 
 
-<Poner liga de la documentacion>
+https://aztlan.fciencias.unam.mx/~canek/2025-2-icc/practica5/apidocs/index.html

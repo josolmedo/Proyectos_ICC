@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="3" name="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" time="0.054" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" time="0.017" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.26+4-post-Ubuntu-1ubuntu122.04"/>
@@ -43,7 +43,7 @@
     <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
     <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -61,71 +61,11 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testCarga" time="0.003">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertTrue(Assert.java:53)
-	at mx.unam.ciencias.icc.test.TestBaseDeDatosPerros.testCarga(TestBaseDeDatosPerros.java:204)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:299)
-	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:293)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-</failure>
-  </testcase>
-  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testAgregaRegistro" time="0.015"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testAgregaRegistro" time="0"/>
   <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testEliminaRegistro" time="0.003"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testCreaRegistro" time="0.001"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testGetNumRegistros" time="0.004"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testGetRegistros" time="0.003"/>
-  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testBuscaRegistros" time="0.009">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertTrue(Assert.java:53)
-	at mx.unam.ciencias.icc.test.TestBaseDeDatosPerros.testBuscaRegistros(TestBaseDeDatosPerros.java:307)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:299)
-	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:293)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-</failure>
-  </testcase>
-  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testGuarda" time="0.011">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertTrue(Assert.java:53)
-	at mx.unam.ciencias.icc.test.TestBaseDeDatosPerros.testGuarda(TestBaseDeDatosPerros.java:174)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:299)
-	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:293)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-</failure>
-  </testcase>
-  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testLimpia" time="0.003"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testCreaRegistro" time="0.002"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testGetNumRegistros" time="0.005"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testGetRegistros" time="0.004"/>
+  <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testLimpia" time="0.001"/>
   <testcase classname="mx.unam.ciencias.icc.test.TestBaseDeDatosPerros" name="testConstructor" time="0.002"/>
 </testsuite>
