@@ -226,7 +226,7 @@ public class Aplicacion {
         case "ed": return bdd.buscaRegistros(CampoPerro.EDAD,
                                             getValorEdad(sc));
         case "es": return bdd.buscaRegistros(CampoPerro.ESTATURA,
-                                            getValorEdad(sc));
+                                            getValorEstatura(sc));
         case "p": return bdd.buscaRegistros(CampoPerro.PESO,
                                             getValorPeso(sc));
         default:
@@ -237,13 +237,13 @@ public class Aplicacion {
 
     /* Regresa el valor a buscar para nombre. */
     private String getValorNombre(Scanner sc) {
-        System.out.printf("El nombre debe contener: ");
+        System.out.printf("Ingrese el nombre del perro: ");
         return sc.next();
     }
 
     /* Regresa el valor a buscar para raza. */
     private String getValorRaza(Scanner sc) {
-        System.out.printf("La raza debe contener: ");
+        System.out.printf("Ingrese la raza del perro: ");
         return sc.next();
     }
 

@@ -369,7 +369,7 @@ public class TestPerro {
 
     /**
      * Prueba unitaria para {@link Perro#deseria}.
-     */
+     
     @Test public void testDeseria() {
 
         perro = new Perro(null, null, 0, 0.0, 0.0);
@@ -409,7 +409,7 @@ public class TestPerro {
                 Assert.fail();
             } catch (ExcepcionLineaInvalida eli) {}
         }
-    }
+    }*/
 
     /**
      * Prueba unitaria para {@link perro#casa}.

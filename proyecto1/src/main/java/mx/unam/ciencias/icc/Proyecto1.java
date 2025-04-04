@@ -3,7 +3,7 @@ package mx.unam.ciencias.icc;
 /**
  * Proyecto 1: Base de datos de perros.
  */
-public class Practica5 {
+public class Proyecto1 {
 
     /* Código de terminación por error de uso. */
     private static final int ERROR_USO = 1;

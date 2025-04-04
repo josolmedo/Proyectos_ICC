@@ -25,9 +25,11 @@ al hacer:
 ```
 $ mvn install
 ...
-$ java -jar target/practica5.jar -g archivo.db # guarda la base de datos
+$ java -jar target/proyecto1.jar
 ...
-$ java -jar target/practica5.jar -c archivo.db # carga la base de datos
+$ java -jar target/proyecto1.jar -g perros.db # guarda la base de datos
+...
+$ java -jar target/proyecto1.jar -c perros.db # carga la base de datos
 ```
 
 
@@ -45,3 +47,8 @@ La documentación generada por JavaDoc la pueden consultar aquí:
 
 
 https://aztlan.fciencias.unam.mx/~canek/2025-2-icc/practica5/apidocs/index.html
+
+tar -czvf proyecto1.tar.gz proyecto1
+
+tar -xzvf proyecto1.tar.gz
+
