@@ -8,7 +8,7 @@ public class MergeSort{
 			return; //Terminamos la pila de ejecución
 		}
 
-		int indiceDeEnmedio = arregloDeNumerosAleatorio / 2; //Si el arreglo es de longitud impar truncará el entero
+		int indiceDeEnmedio = longitudOriginal / 2; //Si el arreglo es de longitud impar truncará el entero
 		int[] mitadIzquierda = new int[indiceDeEnmedio]; //El arreglo tendrá la longitud de la mitad de la longitud original
 		int[] mitadDerecha = new int[longitudOriginal - indiceDeEnmedio]; //En caso de que la longitudOriginal sea impar
 
@@ -22,6 +22,39 @@ public class MergeSort{
 			mitadDerecha[contador - indiceDeEnmedio] = arregloDeNumerosAleatorios[contador];
 		}
 
+		mergeSort(mitadIzquierda);
+		mergeSort(mitadDerecha);
+
+		merge(arregloDeNumerosAleatorios, mitadIzquierda, mitadDerecha);
+	}
+
+	public static void merge(int[] arregloDeNumerosAleatorios, int[] mitadIzquierda, int[] mitadDerecha){
+		int longitudMitadIzquierda = mitadIzquierda.length;
+		int longitudMitadDerecha = mitadDerecha.length;
+
+		int i = 0, j= 0, k = 0;
+
+		while (i < longitudMitadIzquierda && j < longitudMitadDerecha) {
+			if (mitadIzquierda[i] <= mitadDerecha[j]){
+				arregloDeNumerosAleatorios[k] = mitadIzquierda[i]; //Asignamos como primer elemento del arreglo 
+				i++;
+			}
+			else {
+				arregloDeNumerosAleatorios[k] = mitadDerecha[j];
+				j++;
+			}
+			k++;
+		}
+		while (i < longitudMitadIzquierda){ // Ciclo para iterar en el arreglo izquierdo o derecho faltante
+			arregloDeNumerosAleatorios[k] = mitadIzquierda[i];
+			i++;
+			k++;
+		}
+		while (j < longitudMitadDerecha){ // Ciclo para iterar en el arreglo izquierdo o derecho faltante
+			arregloDeNumerosAleatorios[k] = mitadDerecha[j];
+			j++;
+			k++;
+		}
 
 	}
 	

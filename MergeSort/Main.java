@@ -6,6 +6,8 @@ public class Main{
 		ImprimirArreglo.imprimir(arregloDeNumerosAleatorios);
 
 		System.out.println("\nDespues de ordenar: \n");
+		MergeSort.mergeSort(arregloDeNumerosAleatorios);
+		ImprimirArreglo.imprimir(arregloDeNumerosAleatorios);
 
 
 
