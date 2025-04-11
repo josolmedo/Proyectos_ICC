@@ -39,33 +39,66 @@ public class MergeSort{
 		while (i < longitudMitadIzquierda && j < longitudMitadDerecha) {
 			cadenaIzquierda = mitadIzquierda[i].trim();
 			cadenaDerecha = mitadDerecha[j].trim();
-			cadenaIzquierda = mitadIzquierda[i].replaceAll("[^a-zA-Z0-9]", "");
-			cadenaDerecha = mitadDerecha[j].replaceAll("[^a-zA-Z0-9]", "");
-			cadenaIzquierda = mitadIzquierda[i].replace("á", "a");
-			cadenaIzquierda = mitadIzquierda[i].replace("Á", "a");
-			cadenaIzquierda = mitadIzquierda[i].replace("é", "e");
-        	cadenaIzquierda = mitadIzquierda[i].replace("É", "e");
-        	cadenaIzquierda = mitadIzquierda[i].replace("í", "i");
-        	cadenaIzquierda = mitadIzquierda[i].replace("Í", "i");
-        	cadenaIzquierda = mitadIzquierda[i].replace("ó", "o");
-       		cadenaIzquierda = mitadIzquierda[i].replace("Ó", "o");
-        	cadenaIzquierda = mitadIzquierda[i].replace("ú", "u");
-        	cadenaIzquierda = mitadIzquierda[i].replace("Ú", "u");
-        	cadenaIzquierda = mitadIzquierda[i].replace("ü", "u");
-        	cadenaIzquierda = mitadIzquierda[i].replace("Ü", "u");
+			cadenaIzquierda = cadenaIzquierda.replaceAll("^\\p{L}\\p{N}", "");
+			cadenaDerecha = cadenaDerecha.replaceAll("^\\p{L}\\p{N}", "");
 
-        	cadenaDerecha = mitadDerecha[j].replace("á", "a");
-			cadenaDerecha = mitadDerecha[j].replace("Á", "a");
-			cadenaDerecha = mitadDerecha[j].replace("é", "e");
-        	cadenaDerecha = mitadDerecha[j].replace("É", "e");
-        	cadenaDerecha = mitadDerecha[j].replace("í", "i");
-        	cadenaDerecha = mitadDerecha[j].replace("Í", "i");
-        	cadenaDerecha = mitadDerecha[j].replace("ó", "o");
-       		cadenaDerecha = mitadDerecha[j].replace("Ó", "o");
-        	cadenaDerecha = mitadDerecha[j].replace("ú", "u");
-        	cadenaDerecha = mitadDerecha[j].replace("Ú", "u");
-        	cadenaDerecha = mitadDerecha[j].replace("ü", "u");
-        	cadenaDerecha = mitadDerecha[j].replace("Ü", "u");
+			cadenaIzquierda = cadenaIzquierda.replaceAll("\\?", "");
+			cadenaDerecha = cadenaDerecha.replaceAll("\\?", "");
+
+			cadenaIzquierda = cadenaIzquierda.replaceAll("\\¡", "");
+			cadenaDerecha = cadenaDerecha.replaceAll("\\¡", "");
+
+			cadenaIzquierda = cadenaIzquierda.replaceAll("\\¿", "");
+			cadenaDerecha = cadenaDerecha.replaceAll("\\¿", "");
+
+			cadenaIzquierda = cadenaIzquierda.replaceAll(" ", "");
+			cadenaDerecha = cadenaDerecha.replaceAll(" ", "");
+
+			cadenaIzquierda = cadenaIzquierda.replaceAll("\\%", "");
+			cadenaDerecha = cadenaDerecha.replaceAll("\\%", "");
+
+			cadenaIzquierda = cadenaIzquierda.replaceAll("\\,", "");
+			cadenaDerecha = cadenaDerecha.replaceAll("\\,", "");
+
+			cadenaIzquierda = cadenaIzquierda.replaceAll("\\.", "");
+			cadenaDerecha = cadenaDerecha.replaceAll("\\.", "");
+
+
+
+
+
+			//cadenaIzquierda = mitadIzquierda[i].replaceAll("[^a-zA-Z0-9]", "");
+			//cadenaDerecha = cadenaDerecha.replaceAll("[^a-zA-Z0-9]", "");
+			cadenaIzquierda = cadenaIzquierda.replaceAll("á", "a");
+			cadenaIzquierda = cadenaIzquierda.replaceAll("Á", "a");
+			cadenaIzquierda = cadenaIzquierda.replaceAll("é", "e");
+        	cadenaIzquierda = cadenaIzquierda.replaceAll("É", "e");
+        	cadenaIzquierda = cadenaIzquierda.replaceAll("í", "i");
+        	cadenaIzquierda = cadenaIzquierda.replaceAll("Í", "i");
+        	cadenaIzquierda = cadenaIzquierda.replaceAll("ó", "o");
+       		cadenaIzquierda = cadenaIzquierda.replaceAll("Ó", "o");
+        	cadenaIzquierda = cadenaIzquierda.replaceAll("ú", "u");
+        	cadenaIzquierda = cadenaIzquierda.replaceAll("Ú", "u");
+        	cadenaIzquierda = cadenaIzquierda.replaceAll("ü", "u");
+        	cadenaIzquierda = cadenaIzquierda.replaceAll("Ü", "u");
+
+        	cadenaDerecha = cadenaDerecha.replaceAll("á", "a");
+			cadenaDerecha = cadenaDerecha.replaceAll("Á", "a");
+			cadenaDerecha = cadenaDerecha.replaceAll("é", "e");
+        	cadenaDerecha = cadenaDerecha.replaceAll("É", "e");
+        	cadenaDerecha = cadenaDerecha.replaceAll("í", "i");
+        	cadenaDerecha = cadenaDerecha.replaceAll("Í", "i");
+        	cadenaDerecha = cadenaDerecha.replaceAll("ó", "o");
+       		cadenaDerecha = cadenaDerecha.replaceAll("Ó", "o");
+        	cadenaDerecha = cadenaDerecha.replaceAll("ú", "u");
+        	cadenaDerecha = cadenaDerecha.replaceAll("Ú", "u");
+        	cadenaDerecha = cadenaDerecha.replaceAll("ü", "u");
+        	cadenaDerecha = cadenaDerecha.replaceAll("Ü", "u");
+
+        	cadenaIzquierda = cadenaIzquierda.toLowerCase();
+        	cadenaDerecha = cadenaDerecha.toLowerCase();
+
+
 
 
 			if (cadenaIzquierda.compareToIgnoreCase(cadenaDerecha) <= 0){

@@ -45,8 +45,6 @@ public class Main{
         for (String linea: lines) {
             System.out.println(linea);
         }
-        System.out.printf("\n");
-	}
-
-	
+        System.out.print("////////////////////////////////////////////////////////////////////////////////////////////////////\n");
+    }
 }
