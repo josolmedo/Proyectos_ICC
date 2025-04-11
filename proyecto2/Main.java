@@ -1,7 +1,9 @@
 public class Main{
 	public static void main(String[] args){
 
-        String[] lines = {
+        Lista<String> lista = new Lista<String>();
+
+        String[] lineas = {
             "Hombres necios que acusáis",
             "    a la mujer sin razón,",
             "sin ver que sois la ocasión",
@@ -33,17 +35,22 @@ public class Main{
             "    y siente que no esté claro?"
         };
 
-        System.out.println("\nAntes de ordenar:\n");
-        for (String linea: lines){
-        	System.out.println(linea);
-
+        for (String linea: lineas){
+            lista.agregaFinal(linea);
         }
 
-        MergeSort.mergeSort(lines);
+        System.out.println("\nAntes de ordenar:\n");
+        for (int contador = 0; contador<lista.getLongitud(); contador++) {
+        	String registro = lista.get(contador);
+            System.out.println(registro);
+        }
+
+        MergeSort.mergeSort(lista);
 
         System.out.println("\nDespués de ordenar:\n");
-        for (String linea: lines) {
-            System.out.println(linea);
+        for (int contador = 0; contador<lista.getLongitud(); contador++) {
+            String registro = lista.get(contador);
+            System.out.println(registro);
         }
         System.out.print("////////////////////////////////////////////////////////////////////////////////////////////////////\n");
     }
