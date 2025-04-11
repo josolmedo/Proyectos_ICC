@@ -1,4 +1,4 @@
-public class OrdenadorLexicografico {
+/*public class OrdenadorLexicografico {
 
     public static void main(String[] args) {
         // Texto de entrada: cada línea tal como está escrita
@@ -71,7 +71,7 @@ public class OrdenadorLexicografico {
      *  - Elimina cualquier carácter no alfanumérico
      *  - Convierte a minúsculas (para comparar sin distinguir mayúsculas/minúsculas)
      */
-    public static String transform(String s) {
+  /*  public static String transform(String s) {
         // Quitar espacios al inicio, final e internos
         String result = s.trim().replaceAll("\\s+", "");
         // Reemplazar vocales acentuadas por las equivalentes sin acento
@@ -141,8 +141,7 @@ public class OrdenadorLexicografico {
             k++;
         }
     }
-}
-
+}/*
 
 
 
