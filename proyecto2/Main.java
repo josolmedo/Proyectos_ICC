@@ -39,7 +39,7 @@ public class Main{
             lista.agregaFinal(linea);
         }
 
-        System.out.println("\nAntes de ordenar:\n");
+        System.out.println("\nAntes de ordenar: \n");
         for (int contador = 0; contador<lista.getLongitud(); contador++) {
         	String registro = lista.get(contador);
             System.out.println(registro);
@@ -47,10 +47,20 @@ public class Main{
 
         MergeSort.mergeSort(lista);
 
-        System.out.println("\nDespués de ordenar:\n");
+        System.out.println("\nDespués de ordenar: \n");
         for (int contador = 0; contador<lista.getLongitud(); contador++) {
             String registro = lista.get(contador);
             System.out.println(registro);
+        }
+        System.out.print("////////////////////////////////////////////////////////////////////////////////////////////////////\n");
+
+
+        MergeSort.mergeSortInvertido(lista);
+
+        System.out.println("\nOrdenamiento inverso: \n");
+        for (int contador = 0; contador<lista.getLongitud(); contador++) {
+            String registro2 = lista.get(contador);
+            System.out.println(registro2);
         }
         System.out.print("////////////////////////////////////////////////////////////////////////////////////////////////////\n");
     }
