@@ -9,6 +9,8 @@ public class Main{
 		MergeSort.mergeSort(arregloDeNumerosAleatorios);
 		ImprimirArreglo.imprimir(arregloDeNumerosAleatorios);
 
+		System.out.println("\n");
+
 
 
 	}
