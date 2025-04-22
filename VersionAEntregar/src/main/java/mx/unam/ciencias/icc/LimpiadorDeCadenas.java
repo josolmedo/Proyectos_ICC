@@ -1,11 +1,18 @@
 package mx.unam.ciencias.icc;
 
 public class LimpiadorDeCadenas{
-	public static String limpiar(String linea){
+	public static String limpiar(String linea){       
+        
         linea = linea.trim();
         linea = linea.replaceAll("^\\p{L}\\p{N}", "");
+        linea = linea.replaceAll("[\\{\\}\\¨\\\\\\*\\+\\-]", ""); // elimina caracteres individuales
+        linea = linea.replaceAll("/\\*\\*", ""); // elimina /** específicamente
         linea = linea.replaceAll(" ", "");
         linea = linea.replaceAll("\\?", "");
+        linea = linea.replaceAll("\"", "");
+        linea = linea.replaceAll("\"", "");
+        linea = linea.replaceAll("\\*", "");
+        linea = linea.replaceAll("[*\\\\]", "");
         linea = linea.replaceAll("\\¡", "");
         linea = linea.replaceAll("\\¿", "");
         linea = linea.replaceAll("\\%", "");
@@ -25,6 +32,7 @@ public class LimpiadorDeCadenas{
         linea = linea.replaceAll("ü", "u");
         linea = linea.replaceAll("Ü", "u");
         linea = linea.toLowerCase();
+        
     	return linea;
     }
 }
