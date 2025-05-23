@@ -1,5 +1,6 @@
 package mx.unam.ciencias.icc;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -80,7 +81,6 @@ public class Lista<T> implements Iterable<T> {
         @Override public void start() {
             anterior = null;
             siguiente = cabeza;
-
         }
 
         /* Mueve el iterador al final de la lista. */
@@ -178,7 +178,7 @@ public class Lista<T> implements Iterable<T> {
      * @throws IllegalArgumentException si <code>elemento</code> es
      *         <code>null</code>.
      */
-    public void inserta(int i, T elemento) throws IllegalArgumentException {
+    public void inserta(int i, T elemento) {
         if(elemento == null){
             throw new IllegalArgumentException("El registro que quieres ingresar está vacío");            
         }
@@ -229,7 +229,6 @@ public class Lista<T> implements Iterable<T> {
             }
             iterable=iterable.siguiente;
         }
-        
     }
 
     /**
@@ -237,8 +236,8 @@ public class Lista<T> implements Iterable<T> {
      * @return el primer elemento de la lista antes de eliminarlo.
      * @throws NoSuchElementException si la lista es vacía.
      */
-    public T eliminaPrimero() throws NoSuchElementException{
-       if(longitud == 0){
+    public T eliminaPrimero() {
+        if(longitud == 0){
             throw new NoSuchElementException("No hay registros");
         }
         Nodo n = cabeza;
@@ -257,7 +256,7 @@ public class Lista<T> implements Iterable<T> {
      * @return el último elemento de la lista antes de eliminarlo.
      * @throws NoSuchElementException si la lista es vacía.
      */
-    public T eliminaUltimo() throws NoSuchElementException {
+    public T eliminaUltimo() {
         if(longitud == 0){
             throw new NoSuchElementException("No hay registros");
         }
@@ -278,7 +277,7 @@ public class Lista<T> implements Iterable<T> {
      * @return <code>true</code> si <code>elemento</code> está en la lista,
      *         <code>false</code> en otro caso.
      */
-    public boolean contiene(T elemento) {        
+    public boolean contiene(T elemento) {
         for(T e: this){
             if (e.equals(elemento)){
                 return true;
@@ -337,7 +336,7 @@ public class Lista<T> implements Iterable<T> {
      * @return el primer elemento de la lista.
      * @throws NoSuchElementException si la lista es vacía.
      */
-    public T getUltimo() throws NoSuchElementException{
+    public T getUltimo() {
         if(longitud == 0){
             throw new NoSuchElementException("No hay registros");
         }
@@ -351,7 +350,7 @@ public class Lista<T> implements Iterable<T> {
      * @throws ExcepcionIndiceInvalido si <em>i</em> es menor que cero o mayor o
      *         igual que el número de elementos en la lista.
      */
-    public T get(int i) throws ExcepcionIndiceInvalido{
+    public T get(int i) {
         if (i < 0 || i >= longitud){
             throw new ExcepcionIndiceInvalido("Índice inválido");
         } 
@@ -383,43 +382,23 @@ public class Lista<T> implements Iterable<T> {
         return -1;
     }
 
-    public void cambia(int i, T elemento){
-        elimina(elemento);
-        inserta(i, elemento);
-    }
-
     /**
      * Regresa una representación en cadena de la lista.
      * @return una representación en cadena de la lista.
      */
     @Override public String toString() {
         if (esVacia()){
-           return "[]";
-        }
-        String s = "[";
-        for(T e: this){
-            s += String.format("%s", e);
-            if(e != getUltimo()){
-                s+=", ";
-            }
-        }
-        s+="]";
-        return s;
-
-       /* if (esVacia()){
-           return "[]";
-        }
-        String s = "[";
-        Nodo iterador = cabeza;
-        while(iterador!= null){
-            s += String.format("%s", iterador.elemento);
-            if(iterador.siguiente != null){
-                s+=", ";
-            }
-            iterador=iterador.siguiente;
-        }
-        s+="]";
-        return s;*/
+            return "[]";
+         }
+         String s = "[";
+         for(T e: this){
+             s += String.format("%s", e);
+             if(e != getUltimo()){
+                 s+=", ";
+                }
+         }
+         s+="]";
+         return s;
     }
 
     /**
@@ -447,7 +426,13 @@ public class Lista<T> implements Iterable<T> {
             nodo1 = nodo1.siguiente; 
             nodo2 = nodo2.siguiente;
         }
-        return true;    }
+        return true;
+    }
+
+    public void cambia(int i, T elemento){
+        elimina(elemento);
+        inserta(i, elemento);
+    }
 
     /**
      * Regresa un iterador para recorrer la lista en una dirección.
@@ -463,5 +448,114 @@ public class Lista<T> implements Iterable<T> {
      */
     public IteradorLista<T> iteradorLista() {
         return new Iterador();
+    }
+
+    /**
+     * Regresa una copia de la lista, pero ordenada. Para poder hacer el
+     * ordenamiento, el método necesita una instancia de {@link Comparator} para
+     * poder comparar los elementos de la lista.
+     * @param comparador el comparador que la lista usará para hacer el
+     *                   ordenamiento.
+     * @return una copia de la lista, pero ordenada.
+     */
+    public Lista<T> mergeSort(Comparator<T> comparador) {
+        // Caso base: listas de cero o un elemento ya están “ordenadas”
+        if (longitud < 2)
+            return copia();
+
+        // Partir la lista en dos
+        int mitad = longitud / 2;
+        Lista<T> izquierda = new Lista<>();
+        Lista<T> derecha = new Lista<>();
+        int indice = 0;
+        for (T e : this) {
+            if (indice < mitad){
+                izquierda.agregaFinal(e);
+            }
+            else{
+                derecha.agregaFinal(e);
+            }
+            indice++;
+        }
+
+        // Ordenar recursivamente cada mitad
+        Lista<T> ordIzquierda = izquierda.mergeSort(comparador);
+        Lista<T> ordDerecha = derecha.mergeSort(comparador);
+
+        // Mezclar las dos mitades ordenadas
+        Lista<T> resultado = new Lista<>();
+        IteradorLista<T> it1 = ordIzquierda.iteradorLista();
+        IteradorLista<T> it2 = ordDerecha.iteradorLista();
+        T e1 = it1.hasNext() ? it1.next() : null;
+        T e2 = it2.hasNext() ? it2.next() : null;
+
+        while (e1 != null && e2 != null) {
+            if (comparador.compare(e1, e2) <= 0) {
+                resultado.agregaFinal(e1);
+                e1 = it1.hasNext() ? it1.next() : null;
+            } else {
+                resultado.agregaFinal(e2);
+                e2 = it2.hasNext() ? it2.next() : null;
+            }
+        }
+        // Agregar lo que quede
+        while (e1 != null) {
+            resultado.agregaFinal(e1);
+            e1 = it1.hasNext() ? it1.next() : null;
+        }
+        while (e2 != null) {
+            resultado.agregaFinal(e2);
+            e2 = it2.hasNext() ? it2.next() : null;
+        }
+
+        return resultado;
+    }
+
+    /**
+     * Regresa una copia de la lista recibida, pero ordenada. La lista recibida
+     * tiene que contener nada más elementos que implementan la interfaz {@link
+     * Comparable}.
+     * @param <T> tipo del que puede ser la lista.
+     * @param lista la lista que se ordenará.
+     * @return una copia de la lista recibida, pero ordenada.
+     */
+    public static <T extends Comparable<T>>
+    Lista<T> mergeSort(Lista<T> lista) {
+        return lista.mergeSort((a, b) -> a.compareTo(b));
+    }
+
+    /**
+     * Busca un elemento en la lista ordenada, usando el comparador recibido. El
+     * método supone que la lista está ordenada usando el mismo comparador.
+     * @param elemento el elemento a buscar.
+     * @param comparador el comparador con el que la lista está ordenada.
+     * @return <code>true</code> si el elemento está contenido en la lista,
+     *         <code>false</code> en otro caso.
+     */
+    public boolean busquedaLineal(T elemento, Comparator<T> comparador) {
+        int cmp;
+        for (T e : this) {
+            cmp = comparador.compare(e, elemento);
+            if (cmp == 0)        // lo encontramos
+                return true;
+            else if (cmp > 0)    // ya pasamos el posible punto de inserción
+                return false;
+        }
+        return false;
+    }
+
+    /**
+     * Busca un elemento en una lista ordenada. La lista recibida tiene que
+     * contener nada más elementos que implementan la interfaz {@link
+     * Comparable}, y se da por hecho que está ordenada.
+     * @param <T> tipo del que puede ser la lista.
+     * @param lista la lista donde se buscará.
+     * @param elemento el elemento a buscar.
+     * @return <code>true</code> si el elemento está contenido en la lista,
+     *         <code>false</code> en otro caso.
+     */
+    public static <T extends Comparable<T>>
+    boolean busquedaLineal(Lista<T> lista, T elemento) {
+        return lista.busquedaLineal(elemento, (a, b) -> a.compareTo(b));
     }
 }

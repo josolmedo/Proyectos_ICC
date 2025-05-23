@@ -21,7 +21,8 @@ public class Aplicacion {
         /* Modo para guardar. */
         GUARDA(1),
         /* Modo para cargar. */
-        CARGA(2);
+        REVERSA(2);
+        
 
         /* Código de terminación. */
         private int codigo;
@@ -40,7 +41,7 @@ public class Aplicacion {
         public static Modo getModo(String bandera) {
             switch (bandera) {
             case "-o": return GUARDA;
-            case "-r": return CARGA;
+            case "-r": return REVERSA;
             default: throw new IllegalArgumentException(
                 "Bandera inválida: " + bandera);
             }
@@ -54,6 +55,10 @@ public class Aplicacion {
     /* El modo de la aplicación. */
     private Modo modo;
 
+    private Modo modo1;
+
+    private Modo modo2;
+
     /**
      * Define el estado inicial de la aplicación.
      * @param bandera la bandera de modo.
@@ -65,6 +70,8 @@ public class Aplicacion {
         this.ruta = ruta;        
     }
 
+    
+
     /**
      * Ejecuta la aplicación.
      */
@@ -73,19 +80,25 @@ public class Aplicacion {
         case GUARDA:
             guarda();
             break;
-        case CARGA:
-            carga();
+        case REVERSA:
+            reversa();
             break;
         }
     }
 
-    /* Modo de guarda de la aplicación. */
-    private void guarda() {
-        /*Scanner sc = new Scanner(System.in);
-        sc.useDelimiter("\n");
-        verificaSalida(sc);
-        agregaEstudiantes(sc);
-        sc.close();*/
+    public void ejecuta2() {
+        switch (modo) {
+        case REVERSA:
+            guarda2();
+            break;
+        }
+    }    
+
+
+
+     /* Modo de guarda de la aplicación. */
+    private void guarda2() {
+        
         try {
 
             String registro;
@@ -108,26 +121,17 @@ public class Aplicacion {
 
             in.close();
 
-            System.out.println("\nAntes de ordenar: \n");
-            for (int contador = 0; contador<lista.getLongitud(); contador++) {
-                registro = lista.get(contador);
-                System.out.println(registro);
-            }
+           
+
+            MergeSort.mergeSortInvertido(lista);
+
+            
+
+            
+            
 
 
-
-
-
-            MergeSort.mergeSort(lista);
-
-            System.out.println("\nAsì se ve tu nuevo archivo ordenado lexicogràficamente: \n");
-            for (int contador = 0; contador<lista.getLongitud(); contador++) {
-                registro = lista.get(contador);
-                System.out.println(registro);
-            }
-
-
-            MergeSort.mergeSort(lista);
+            
 
             BufferedWriter out =
                 new BufferedWriter(
@@ -139,6 +143,7 @@ public class Aplicacion {
                 out.newLine();
             }
             out.close();
+            System.out.println("\nArchivo guardado exitosamente\n");
 
         } catch (IOException ioe) {
             System.err.printf("No pude sobreescribir el archivo \"%s\".\n",
@@ -147,56 +152,70 @@ public class Aplicacion {
         }
     }
 
-    /* Verifica que la salida no exista o le permite salir al usuario. 
-    private void verificaSalida(Scanner sc) {
-        File archivo = new File(ruta);
-        if (archivo.exists()) {
-            System.out.printf("El archivo \"%s\" ya existe y será " +
-                              "reescrito.\n¿Desea continuar? (s/n): ", ruta);
-            String r = sc.next();
-            if (!r.equals("s")) {
-                sc.close();
-                System.exit(0);
+
+    /* Modo de guarda de la aplicación. */
+    private void guarda() {
+        /*Scanner sc = new Scanner(System.in);
+        sc.useDelimiter("\n");
+        verificaSalida(sc);
+        agregaEstudiantes(sc);
+        sc.close();*/
+        try {
+
+            
+
+            Lista<String> lista = new Lista<String>();
+            BufferedReader in =
+                new BufferedReader(
+                    new InputStreamReader(
+                        new FileInputStream(ruta)));
+            String linea;
+            while ((linea =in.readLine()) != null){
+                if(linea.isEmpty()){
+                    lista.agregaInicio(linea);
+                }
+                else{
+                    lista.agregaFinal(linea);
+                }
+                
             }
+
+            in.close();
+
+            
+
+            lista = lista.mergeSort((e1, e2) -> {
+                // quitamos sólo la sangría inicial para comparar, pero NO modificamos e1/e2
+                String t1 = LimpiadorDeCadenas.limpiar(e1);
+                String t2 = LimpiadorDeCadenas.limpiar(e2);
+                return t1.compareToIgnoreCase(t2);
+            });
+
+           
+
+            
+            BufferedWriter out =
+                new BufferedWriter(
+                    new OutputStreamWriter(
+                        new FileOutputStream(ruta)));
+            
+            for (String nuevasLineas : lista) {
+                out.write(nuevasLineas);
+                out.newLine();
+            }
+            out.close();
+            System.out.println("\nArchivo guardado exitosamente\n");
+
+        } catch (IOException ioe) {
+            System.err.printf("No pude sobreescribir el archivo \"%s\".\n",
+                              ruta);
+            System.exit(modo.getCodigo());
         }
-    }*/
+    }
 
-    /* Agrega estudiantes a la base de datos mientras el usuario lo desee. 
-    private void agregaEstudiantes(Scanner sc) {
-         System.out.println("\nDeje el nombre en blanco para " +
-                            "parar la captura de estudiantes.");
-        Estudiante e = null;
-        do {
-            try {
-                e = getEstudiante(sc);
-                if (e != null)
-                    bdd.agregaRegistro(e);
-            } catch (InputMismatchException ime) {
-                System.err.printf("\nNúmero inválido. Se descartará " +
-                                  "este estudiante.\n");
-                sc.next(); // Purgamos la última entrada del usuario.
-                continue;
-            }
-        } while (e != null);
-    }*/
-
-    /* Obtiene un estudiante de la línea de comandos. 
-    private Estudiante getEstudiante(Scanner sc) {
-        System.out.printf("\nNombre   : ");
-        String nombre = sc.next();
-        if (nombre.equals(""))
-            return null;
-        System.out.printf("Cuenta   : ");
-        int cuenta = sc.nextInt();
-        System.out.printf("Promedio : ");
-        double promedio = sc.nextDouble();
-        System.out.printf("Edad     : ");
-        int edad = sc.nextInt();
-        return new Estudiante(nombre, cuenta, promedio, edad);
-    }*/
-
-    /* Modo de carga de la aplicación. */
-    private void carga() {
+    
+    /* Modo de reversa de la aplicación. */
+    private void reversa() {
         try {
 
             String registro;
@@ -212,112 +231,22 @@ public class Aplicacion {
             }
             in.close();
 
-            System.out.println("\nAntes de ordenar: \n");
-            for (int contador = 0; contador<lista.getLongitud(); contador++) {
-                registro = lista.get(contador);
-                System.out.println(registro);
-            }
-
+           
             MergeSort.mergeSortInvertido(lista);
 
-            BufferedWriter out =
-                new BufferedWriter(
-                    new OutputStreamWriter(
-                        new FileOutputStream(ruta)));
             
-            for (String nuevasLineas : lista) {
-                out.write(nuevasLineas);
-                out.newLine();
-            }
-            out.close();
-
-            System.out.println("\nAsì se ve tu nuevo archivo ordenado lexicogràficamente: \n");
+            
             for (int contador = 0; contador<lista.getLongitud(); contador++) {
                 registro = lista.get(contador);
                 System.out.println(registro);
             }
 
         } catch (IOException ioe) {
-            System.err.printf("No pude sobreescribir el archivo \"%s\".\n",
+            System.err.printf("No pude leer el archivo \"%s\".\n",
                               ruta);
             System.exit(modo.getCodigo());
         }
-        /*Scanner sc = new Scanner(System.in);
-        sc.useDelimiter("\n");
-        busca(sc);
-        sc.close();*/
+        
     }
-
-    /* Hace la búsqueda. 
-    private void busca(Scanner sc) {
-        System.out.println("\nDeje el campo en blanco para " +
-                           "parar la búsqueda de estudiantes.");
-        String c = "X";
-        while (!(c = getCampo(sc)).equals("")) {
-            Lista<Estudiante> l;
-            try {
-                l = getResultados(c, sc);
-            } catch (ExcepcionOpcionInvalida epi) {
-                System.out.printf("%s\n", epi.getMessage());
-                continue;
-            } catch (InputMismatchException ime) {
-                System.out.printf("\nValor inválido. Búsqueda descartada.\n");
-                sc.next(); // Purgamos la entrada.
-                continue;
-            }
-            if (l.esVacia())
-                System.out.println("\nCero registros casan la búsqueda.");
-            else
-                for (Estudiante e : l)
-                    System.out.printf("%s\n\n", e);
-        }
-    }*/
-
-    /* Regresa el campo. 
-    private String getCampo(Scanner sc) {
-        System.out.printf("\n¿Por qué campo quiere buscar? (n/c/p/e): ");
-        return sc.next();
-    }*/
-
-    /* Regresa los resultados de la búsqueda. 
-    private Lista<Estudiante> getResultados(String c, Scanner sc) {
-        System.out.println();
-        switch (c) {
-        case "n": return bdd.buscaRegistros(CampoEstudiante.NOMBRE,
-                                            getValorNombre(sc));
-        case "c": return bdd.buscaRegistros(CampoEstudiante.CUENTA,
-                                            getValorCuenta(sc));
-        case "p": return bdd.buscaRegistros(CampoEstudiante.PROMEDIO,
-                                            getValorPromedio(sc));
-        case "e": return bdd.buscaRegistros(CampoEstudiante.EDAD,
-                                            getValorEdad(sc));
-        default:
-            String m = String.format("El campo '%s' es inválido.", c);
-            throw new ExcepcionOpcionInvalida(m);
-        }
-    }*/
-
-    /* Regresa el valor a buscar para nombre. 
-    private String getValorNombre(Scanner sc) {
-        System.out.printf("El nombre debe contener: ");
-        return sc.next();
-    }
-
-    /* Regresa el valor a buscar para el número de cuenta. 
-    private Integer getValorCuenta(Scanner sc) {
-        System.out.printf("El número de cuenta debe ser mayor o igual a: ");
-        return Integer.valueOf(sc.nextInt());
-    }
-
-    /* Regresa el valor a buscar para el promedio. 
-    private Double getValorPromedio(Scanner sc) {
-        System.out.printf("El promedio debe ser mayor o igual a: ");
-        return Double.valueOf(sc.nextDouble());
-    }
-
-    /* Regresa el valor a buscar para el promedio. 
-    private Integer getValorEdad(Scanner sc) {
-        System.out.printf("La edad debe ser mayor o igual a: ");
-        return Integer.valueOf(sc.nextInt());
-    }*/
+    
 }

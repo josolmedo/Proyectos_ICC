@@ -30,8 +30,10 @@ al hacer:
 ```
 $ mvn install
 ...
-$ java -jar target/practica7.jar -g archivo.txt # para guardar en archivo.txt, o
-$ java -jar target/practica7.jar -c archivo.txt # para cargar de archivo.txt
+$ java -jar target/proyecto2.jar hombres.txt # para mostrar el archivo ordenado
+$ java -jar target/proyecto2.jar -o hombres.txt # para guardar en archivo.txt (ordenado)
+$ java -jar target/proyecto2.jar -r hombres.txt # para imprimir las lineas en orden inverso
+$ java -jar target/proyecto2.jar -r -o hombres.txt # para imprimir las lineas en orden inverso
 ```
 
 Los únicos archivos que deben modificar son:
